@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4759b985-027f-459b-9f26-e8cfb49526f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mainwindow">
+      <UniqueIdentifier>{dc797ec8-4dd3-4480-9cd1-afbc47224ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket">
+      <UniqueIdentifier>{a3845154-77a3-4179-9519-116c8ade037a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lock">
+      <UniqueIdentifier>{9480ac47-2697-44ad-9afe-946060520e2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\msg">
+      <UniqueIdentifier>{b9699b74-49c5-4348-baa4-58ab0b406301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\convert">
+      <UniqueIdentifier>{1fae34bb-1f18-4ce8-a09b-950deb075824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\uilist">
+      <UniqueIdentifier>{f9af0de9-db42-4d6a-a7fc-dcbc153c5e5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\login">
+      <UniqueIdentifier>{0fea1cd6-a6d0-4a18-aa3f-124a94a57de5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\chatbox">
+      <UniqueIdentifier>{05dcdfb0-a686-4494-aef0-7a743295319d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\notice">
+      <UniqueIdentifier>{9f5516a6-0bb1-40fd-a742-16bc3514cfd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\trayicon">
+      <UniqueIdentifier>{26b86c34-df6f-4759-9bab-28d154e36722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\config">
+      <UniqueIdentifier>{000cf916-3625-40a9-ba97-564ae8268440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\transfile">
+      <UniqueIdentifier>{d0d9f17b-5863-4c77-81e5-62db79152548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\log">
+      <UniqueIdentifier>{e8ce1201-d179-4888-a953-95efade563f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mainwindow.h">
+      <Filter>src\mainwindow</Filter>
+    </ClInclude>
+    <ClInclude Include="lock.h">
+      <Filter>src\lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert.h">
+      <Filter>src\convert</Filter>
+    </ClInclude>
+    <ClInclude Include="UIUserList.h">
+      <Filter>src\uilist</Filter>
+    </ClInclude>
+    <ClInclude Include="Msg.h">
+      <Filter>src\msg</Filter>
+    </ClInclude>
+    <ClInclude Include="ChatSocket.h">
+      <Filter>src\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>src\login</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFriends.h">
+      <Filter>src\uilist</Filter>
+    </ClInclude>
+    <ClInclude Include="UIListCommonDefine.h">
+      <Filter>src\uilist</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPicker.h">
+      <Filter>src\chatbox</Filter>
+    </ClInclude>
+    <ClInclude Include="chat_dialog.h">
+      <Filter>src\chatbox</Filter>
+    </ClInclude>
+    <ClInclude Include="notice.h">
+      <Filter>src\notice</Filter>
+    </ClInclude>
+    <ClInclude Include="trayIcon.h">
+      <Filter>src\trayicon</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>src\config</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenSocket.h">
+      <Filter>src\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="tray.h">
+      <Filter>src\trayicon</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>src\log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>src\mainwindow</Filter>
+    </ClCompile>
+    <ClCompile Include="lock.cpp">
+      <Filter>src\lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Convert.cpp">
+      <Filter>src\convert</Filter>
+    </ClCompile>
+    <ClCompile Include="UIUserList.cpp">
+      <Filter>src\uilist</Filter>
+    </ClCompile>
+    <ClCompile Include="Msg.cpp">
+      <Filter>src\msg</Filter>
+    </ClCompile>
+    <ClCompile Include="ChatSocket.cpp">
+      <Filter>src\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.cpp">
+      <Filter>src\login</Filter>
+    </ClCompile>
+    <ClCompile Include="UIFriends.cpp">
+      <Filter>src\uilist</Filter>
+    </ClCompile>
+    <ClCompile Include="UIListCommonDefine.cpp">
+      <Filter>src\uilist</Filter>
+    </ClCompile>
+    <ClCompile Include="chat_dialog.cpp">
+      <Filter>src\chatbox</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPicker.cpp">
+      <Filter>src\chatbox</Filter>
+    </ClCompile>
+    <ClCompile Include="notice.cpp">
+      <Filter>src\notice</Filter>
+    </ClCompile>
+    <ClCompile Include="trayIcon.cpp">
+      <Filter>src\trayicon</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenSocket.cpp">
+      <Filter>src\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="tray.cpp">
+      <Filter>src\trayicon</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>src\log</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Client.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\bin\logo_.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\bin\logo_3.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

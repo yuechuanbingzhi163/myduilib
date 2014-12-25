@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="socket">
+      <UniqueIdentifier>{39a3de01-4f04-43e4-946a-014fc602013c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainwindow">
+      <UniqueIdentifier>{f466e665-726d-42d7-a0cb-4d2a8378faed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database">
+      <UniqueIdentifier>{38c4af3c-4c34-4cd9-855f-6acba619e58b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="convert">
+      <UniqueIdentifier>{d0bfbf55-c9f1-410b-9de8-8758d9e0d06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="msg">
+      <UniqueIdentifier>{3d29bd46-22cc-4db4-aa98-b45e658366f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uilist">
+      <UniqueIdentifier>{f7eced58-f4c7-48c3-9b6b-cb8159289f7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lock">
+      <UniqueIdentifier>{19d91e70-0f80-475e-be81-b2f01cf1aa1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="menu">
+      <UniqueIdentifier>{075e4ecf-d00d-429f-9736-f2e301c864ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{500a2cdb-890a-41b9-8953-27b348c05531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="trayicon">
+      <UniqueIdentifier>{4300bf4d-591f-4f15-aeb9-1f67ad4ee03d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{377b3fd2-8251-462a-979f-6334ab9978ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="colorpicker">
+      <UniqueIdentifier>{ecbdd3ab-5c9a-486f-a9d8-2c2d34dc8726}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocket.h">
+      <Filter>socket</Filter>
+    </ClInclude>
+    <ClInclude Include="ListeningSocket.h">
+      <Filter>socket</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>database</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert.h">
+      <Filter>convert</Filter>
+    </ClInclude>
+    <ClInclude Include="Msg.h">
+      <Filter>msg</Filter>
+    </ClInclude>
+    <ClInclude Include="UIUserList.h">
+      <Filter>uilist</Filter>
+    </ClInclude>
+    <ClInclude Include="mainwindow.h">
+      <Filter>mainwindow</Filter>
+    </ClInclude>
+    <ClInclude Include="lock.h">
+      <Filter>lock</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="trayIcon.h">
+      <Filter>trayicon</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPicker.h">
+      <Filter>colorpicker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSocket.cpp">
+      <Filter>socket</Filter>
+    </ClCompile>
+    <ClCompile Include="ListeningSocket.cpp">
+      <Filter>socket</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
+      <Filter>database</Filter>
+    </ClCompile>
+    <ClCompile Include="Convert.cpp">
+      <Filter>convert</Filter>
+    </ClCompile>
+    <ClCompile Include="Msg.cpp">
+      <Filter>msg</Filter>
+    </ClCompile>
+    <ClCompile Include="UIUserList.cpp">
+      <Filter>uilist</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>mainwindow</Filter>
+    </ClCompile>
+    <ClCompile Include="lock.cpp">
+      <Filter>lock</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="trayIcon.cpp">
+      <Filter>trayicon</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPicker.cpp">
+      <Filter>colorpicker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Server.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

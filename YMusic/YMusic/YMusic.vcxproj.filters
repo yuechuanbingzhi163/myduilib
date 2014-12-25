@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{61d35b6d-4c0b-4e34-9d69-2a48b9238a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\BaseWindow">
+      <UniqueIdentifier>{9c64a3cc-cab7-40d6-9515-81ba3f1eb762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CacheMgr">
+      <UniqueIdentifier>{2b7e7531-b9c4-4b2a-90f1-23abf34cb878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DataBase">
+      <UniqueIdentifier>{29c3934f-6526-4391-b807-aeb6fde911cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DeskLrc">
+      <UniqueIdentifier>{91b10c21-1491-4ae1-82cb-2219bf5e1334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FilePathMgr">
+      <UniqueIdentifier>{4066f1a0-f868-41dc-9669-c66426baa6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Login">
+      <UniqueIdentifier>{d4dbc120-a062-4a54-b838-a87dfa53db7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MainWindow">
+      <UniqueIdentifier>{d9d5168e-28b5-4222-bf66-80bd685d41fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MenuWindow">
+      <UniqueIdentifier>{b684d5ea-d227-46d0-b2ba-19e4fa772b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MusicLib">
+      <UniqueIdentifier>{de177ab3-3a3c-4ce6-8a4c-dc257dcb46ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MvFolder">
+      <UniqueIdentifier>{490551a0-b832-4f96-a3f6-dbb40f3e0625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\PlayListItem">
+      <UniqueIdentifier>{71e80af1-a7cd-4bfb-b411-08d29e574c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\PlayMgr">
+      <UniqueIdentifier>{8fd4a669-eab5-460c-8f76-a1be38a9c563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Property">
+      <UniqueIdentifier>{76ada02e-1432-4fc7-82d9-9bfe68c8cbb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RuntimeState">
+      <UniqueIdentifier>{094adda8-08f6-4c8b-a7d2-9ea41e929f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SearchLrcWindow">
+      <UniqueIdentifier>{3b4861a7-761f-4de0-a691-05d3facf9f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SelectLrcWindow">
+      <UniqueIdentifier>{1ffebea3-aabc-4077-8611-e5a4990b67d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Setting">
+      <UniqueIdentifier>{3ab61144-37fc-468f-b758-43360b4eaa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Share">
+      <UniqueIdentifier>{78d0fdbd-061d-4b7f-abd1-6c994c23dca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SkinWindow">
+      <UniqueIdentifier>{5f23b2f4-eda7-4987-8218-102d9110f3ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SongListItem">
+      <UniqueIdentifier>{b363f41f-1bcb-4e0e-bf6c-df85d1476427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TagModify">
+      <UniqueIdentifier>{97e0e736-eab9-4eae-b72a-90625bc027c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UIMenu">
+      <UniqueIdentifier>{0a55b019-da86-4f48-9de7-77c5ead031f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty">
+      <UniqueIdentifier>{3c43c927-084a-43b3-9f57-40bdc5933a2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Variable">
+      <UniqueIdentifier>{db00f937-d020-4b46-8783-f5d6cfbf0b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\WebService">
+      <UniqueIdentifier>{39451ff6-7a48-4133-8a41-5d11a0a75ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LrcMgr">
+      <UniqueIdentifier>{b6501464-dbd4-4db7-b0f6-821559d0d50d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LrcView">
+      <UniqueIdentifier>{7014003a-a78c-4dc1-8770-27c2f0f2275d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MusicLib\DownHelper">
+      <UniqueIdentifier>{30b168e2-63c5-4834-9f60-5a0b2d83545a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MusicLib\DownloadItem">
+      <UniqueIdentifier>{14ff6d05-9093-4ae8-9511-dda80fc1fa55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\MusicLib\HttpProcotol">
+      <UniqueIdentifier>{cb3a8324-89ee-47c2-ac74-8ce3008d8b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\base">
+      <UniqueIdentifier>{2b9b7cf4-2d36-4144-8d18-a534f8ecd763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\Convert">
+      <UniqueIdentifier>{e5187828-fab1-4b70-a40b-c3263269f8a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\encpty">
+      <UniqueIdentifier>{e3adf4c1-9870-42aa-90a7-574d0a361eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\json">
+      <UniqueIdentifier>{df33534b-2075-479b-84a5-64ec7b364b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\lock">
+      <UniqueIdentifier>{7298e24b-cd96-4292-86b3-420ffe2d6bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\log">
+      <UniqueIdentifier>{53be13bb-0695-4c09-b9a1-54404a3593d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\tinyxml">
+      <UniqueIdentifier>{109f3b7c-580e-4801-a204-3112c8cbc0ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\win_io">
+      <UniqueIdentifier>{90930bdf-2328-4b0c-a0fc-88a9fefd029f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\json\lib_json">
+      <UniqueIdentifier>{a6bdf53a-aff0-4348-a593-135893c8baf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utilty\json\include">
+      <UniqueIdentifier>{e0f787a5-174d-4055-a967-f8a343a4819d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="YMusic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseWindow\BaseWindow.h">
+      <Filter>src\BaseWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseWindow\InfoWindow.h">
+      <Filter>src\BaseWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DuiLib\DuiLib\Utils\trayIcon.h">
+      <Filter>src\BaseWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CacheMgr\CacheMgr.h">
+      <Filter>src\CacheMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\Database.h">
+      <Filter>src\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\DatabaseManager.h">
+      <Filter>src\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\ShareData.h">
+      <Filter>src\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DesktopLrc\DesktopLrcWindow.h">
+      <Filter>src\DeskLrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DesktopLrc\LrcMask.h">
+      <Filter>src\DeskLrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DesktopLrc\LrcToolBar.h">
+      <Filter>src\DeskLrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FilePathMgr\FilePathMgr.h">
+      <Filter>src\FilePathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Login\LoginWindow.h">
+      <Filter>src\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Login\WebLoginWindow.h">
+      <Filter>src\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcMgr\lrcFileReader.h">
+      <Filter>src\LrcMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcMgr\LrcMgr.h">
+      <Filter>src\LrcMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcMgr\ParseXmlFile.h">
+      <Filter>src\LrcMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcMgr\SearchLrcFromWeb.h">
+      <Filter>src\LrcMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcView\LrcView.h">
+      <Filter>src\LrcView</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MainWindow\YMainWindow.h">
+      <Filter>src\MainWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MenuWindow\MainMenu.h">
+      <Filter>src\MenuWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\DownHelper\Mutex.h">
+      <Filter>src\MusicLib\DownHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\DownHelper\ThreadHelper.h">
+      <Filter>src\MusicLib\DownHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\DownloadItem\DownloadItem.h">
+      <Filter>src\MusicLib\DownloadItem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\HTTPprotocol\HTTPprotocol.h">
+      <Filter>src\MusicLib\HttpProcotol</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\jsHandler.h">
+      <Filter>src\MusicLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MusicLib\MusicLib.h">
+      <Filter>src\MusicLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MvFolder\MediaPlayerWnd.h">
+      <Filter>src\MvFolder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MvFolder\UIMedia.h">
+      <Filter>src\MvFolder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayListItem\YPlayListItem.h">
+      <Filter>src\PlayListItem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayMgr\audioinfo.h">
+      <Filter>src\PlayMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayMgr\AVPlayer.h">
+      <Filter>src\PlayMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayMgr\PlayListMgr.h">
+      <Filter>src\PlayMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Property\PropertyWin.h">
+      <Filter>src\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RuntimeState\RuntimeState.h">
+      <Filter>src\RuntimeState</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SearchLrcWindow\SearchLrcWindow.h">
+      <Filter>src\SearchLrcWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LrcSelectWnd\LrcSelectWnd.h">
+      <Filter>src\SelectLrcWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Setting\ConfigBase.h">
+      <Filter>src\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Setting\ConfigMgr.h">
+      <Filter>src\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Setting\LrcPreview.h">
+      <Filter>src\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Setting\SettingWindow.h">
+      <Filter>src\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Share\ShareWin.h">
+      <Filter>src\Share</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SkinWindow\MySkinLayout.h">
+      <Filter>src\SkinWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SkinWindow\SkinJsHandler.h">
+      <Filter>src\SkinWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SkinWindow\SkinWindow.h">
+      <Filter>src\SkinWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SkinWindow\SysSkinLayout.h">
+      <Filter>src\SkinWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SongListItem\YSongListItem.h">
+      <Filter>src\SongListItem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TagModify\TagModifyWin.h">
+      <Filter>src\TagModify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h">
+      <Filter>src\UIMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\down_http_file.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\md5_checksum.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\mt_helper.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\ResGuard.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\Singleton.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\SmartPtr.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\Thread.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\UrlPraser.h">
+      <Filter>src\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\base\Buffer.h">
+      <Filter>src\Utilty\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\base\CLock.h">
+      <Filter>src\Utilty\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\base\CMemPool.h">
+      <Filter>src\Utilty\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\base\CXString.h">
+      <Filter>src\Utilty\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\base\YTingRuntime.h">
+      <Filter>src\Utilty\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\Convert\Convert.h">
+      <Filter>src\Utilty\Convert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\encrypt\base64.h">
+      <Filter>src\Utilty\encpty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\encrypt\encrypt.h">
+      <Filter>src\Utilty\encpty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\encrypt\url.h">
+      <Filter>src\Utilty\encpty</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\DataParser.h">
+      <Filter>src\Utilty\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\lib_json\json_batchallocator.h">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\autolink.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\config.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\features.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\forwards.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\json.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\reader.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\value.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\json\include\writer.h">
+      <Filter>src\Utilty\json\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\lock\RzLock.h">
+      <Filter>src\Utilty\lock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\log\log.h">
+      <Filter>src\Utilty\log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\win_io\FileMgr.h">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\win_io\io_interface.h">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\win_io\win_io_base.h">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\tinyxml\tinystr.h">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilty\tinyxml\tinyxml.h">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Variable\Var.h">
+      <Filter>src\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\HttpCenter.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\HttpManager.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\HttpThread.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\Link.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\ResponseParser2.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\ServerManager.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\sock.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\UrlService.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\WebService.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WebService\WebServiceCatch.h">
+      <Filter>src\WebService</Filter>
+    </ClInclude>
+    <ClInclude Include="src\YApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="YMusic.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="YMusic.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="YMusic.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseWindow\BaseWindow.cpp">
+      <Filter>src\BaseWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseWindow\InfoWindow.cpp">
+      <Filter>src\BaseWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\DuiLib\DuiLib\Utils\trayIcon.cpp">
+      <Filter>src\BaseWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CacheMgr\CacheMgr.cpp">
+      <Filter>src\CacheMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataBase\Database.cpp">
+      <Filter>src\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataBase\DatabaseManager.cpp">
+      <Filter>src\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataBase\ShareData.cpp">
+      <Filter>src\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DesktopLrc\DesktopLrcWindow.cpp">
+      <Filter>src\DeskLrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DesktopLrc\LrcMask.cpp">
+      <Filter>src\DeskLrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DesktopLrc\LrcToolBar.cpp">
+      <Filter>src\DeskLrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FilePathMgr\FilePathMgr.cpp">
+      <Filter>src\FilePathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Login\LoginWindow.cpp">
+      <Filter>src\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Login\WebLoginWindow.cpp">
+      <Filter>src\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcMgr\lrcFileReader.cpp">
+      <Filter>src\LrcMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcMgr\LrcMgr.cpp">
+      <Filter>src\LrcMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcMgr\ParseXmlFile.cpp">
+      <Filter>src\LrcMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcMgr\SearchLrcFromWeb.cpp">
+      <Filter>src\LrcMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcView\LrcView.cpp">
+      <Filter>src\LrcView</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MainWindow\YMainWindow.cpp">
+      <Filter>src\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MenuWindow\MainMenu.cpp">
+      <Filter>src\MenuWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MusicLib\DownHelper\ThreadHelper.cpp">
+      <Filter>src\MusicLib\DownHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MusicLib\DownloadItem\DownloadItem.cpp">
+      <Filter>src\MusicLib\DownloadItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MusicLib\HTTPprotocol\HTTPprotocol.cpp">
+      <Filter>src\MusicLib\HttpProcotol</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MusicLib\jsHandler.cpp">
+      <Filter>src\MusicLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MusicLib\MusicLib.cpp">
+      <Filter>src\MusicLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MvFolder\MediaPlayerWnd.cpp">
+      <Filter>src\MvFolder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MvFolder\UIMedia.cpp">
+      <Filter>src\MvFolder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayListItem\YPlayListItem.cpp">
+      <Filter>src\PlayListItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayMgr\audioinfo.cpp">
+      <Filter>src\PlayMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayMgr\AVPlayer.cpp">
+      <Filter>src\PlayMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayMgr\PlayListMgr.cpp">
+      <Filter>src\PlayMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Property\PropertyWin.cpp">
+      <Filter>src\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RuntimeState\RuntimeState.cpp">
+      <Filter>src\RuntimeState</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SearchLrcWindow\SearchLrcWindow.cpp">
+      <Filter>src\SearchLrcWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LrcSelectWnd\LrcSelectWnd.cpp">
+      <Filter>src\SelectLrcWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Setting\ConfigBase.cpp">
+      <Filter>src\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Setting\ConfigMgr.cpp">
+      <Filter>src\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Setting\LrcPreview.cpp">
+      <Filter>src\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Setting\SettingWindow.cpp">
+      <Filter>src\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Share\ShareWin.cpp">
+      <Filter>src\Share</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinWindow\MySkinLayout.cpp">
+      <Filter>src\SkinWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinWindow\SkinJsHandler.cpp">
+      <Filter>src\SkinWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinWindow\SkinWindow.cpp">
+      <Filter>src\SkinWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinWindow\SysSkinLayout.cpp">
+      <Filter>src\SkinWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SongListItem\YSongListItem.cpp">
+      <Filter>src\SongListItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TagModify\TagModifyWin.cpp">
+      <Filter>src\TagModify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp">
+      <Filter>src\UIMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\down_http_file.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\md5_checksum.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\mt_helper.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\ResGuard.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\Singleton.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\Thread.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\UrlPraser.cpp">
+      <Filter>src\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\base\Buffer.cpp">
+      <Filter>src\Utilty\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\base\CXString.cpp">
+      <Filter>src\Utilty\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\base\YTingRuntime.cpp">
+      <Filter>src\Utilty\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\Convert\Convert.cpp">
+      <Filter>src\Utilty\Convert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\json\DataParser.cpp">
+      <Filter>src\Utilty\json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\json\lib_json\json_reader.cpp">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\json\lib_json\json_value.cpp">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\json\lib_json\json_writer.cpp">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\lock\RzLock.cpp">
+      <Filter>src\Utilty\lock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\log\log.cpp">
+      <Filter>src\Utilty\log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\win_io\FileMgr.cpp">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\win_io\io_interface.cpp">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\win_io\win_io_base.cpp">
+      <Filter>src\Utilty\win_io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\tinyxml\tinystr.cpp">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\tinyxml\tinyxml.cpp">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\tinyxml\tinyxmlerror.cpp">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilty\tinyxml\tinyxmlparser.cpp">
+      <Filter>src\Utilty\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Variable\Var.cpp">
+      <Filter>src\Variable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\HttpCenter.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\HttpManager.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\HttpThread.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\Link.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\ResponseParser2.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\ServerManager.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\sock.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\UrlService.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\WebService.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WebService\WebServiceCatch.cpp">
+      <Filter>src\WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="src\YApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Utilty\json\lib_json\json_internalarray.inl">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </None>
+    <None Include="src\Utilty\json\lib_json\json_internalmap.inl">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </None>
+    <None Include="src\Utilty\json\lib_json\json_valueiterator.inl">
+      <Filter>src\Utilty\json\lib_json</Filter>
+    </None>
+  </ItemGroup>
+</Project>

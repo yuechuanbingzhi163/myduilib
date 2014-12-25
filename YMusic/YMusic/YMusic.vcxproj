@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{560397DF-AAA0-4EFC-A061-AC6E5119DC3E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>YMusic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <TargetName>YMusic</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../libcurl\include\;../../DuiLib\;../../taglib_plugin\taglib_plugin\;.\src\PlayMgr\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../Lib;../../libcurl\lib\Debug\;./src\DataBase\;./src\Agent\ext\</AdditionalLibraryDirectories>
+      <OutputFile>$(SolutionDir)\..\bin\YMusic.exe</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../libcurl\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>../../bin/$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../Lib;../../libcurl\lib\Release\;./src\DataBase\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h" />
+    <ClInclude Include="..\..\DuiLib\DuiLib\Utils\trayIcon.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="src\BaseWindow\BaseWindow.h" />
+    <ClInclude Include="src\BaseWindow\InfoWindow.h" />
+    <ClInclude Include="src\CacheMgr\CacheMgr.h" />
+    <ClInclude Include="src\DataBase\Database.h" />
+    <ClInclude Include="src\DataBase\DatabaseManager.h" />
+    <ClInclude Include="src\DataBase\ShareData.h" />
+    <ClInclude Include="src\DesktopLrc\DesktopLrcWindow.h" />
+    <ClInclude Include="src\DesktopLrc\LrcMask.h" />
+    <ClInclude Include="src\DesktopLrc\LrcToolBar.h" />
+    <ClInclude Include="src\FilePathMgr\FilePathMgr.h" />
+    <ClInclude Include="src\Login\LoginWindow.h" />
+    <ClInclude Include="src\Login\WebLoginWindow.h" />
+    <ClInclude Include="src\LrcMgr\lrcFileReader.h" />
+    <ClInclude Include="src\LrcMgr\LrcMgr.h" />
+    <ClInclude Include="src\LrcMgr\ParseXmlFile.h" />
+    <ClInclude Include="src\LrcMgr\SearchLrcFromWeb.h" />
+    <ClInclude Include="src\LrcSelectWnd\LrcSelectWnd.h" />
+    <ClInclude Include="src\LrcView\LrcView.h" />
+    <ClInclude Include="src\MainWindow\YMainWindow.h" />
+    <ClInclude Include="src\MenuWindow\MainMenu.h" />
+    <ClInclude Include="src\MusicLib\DownHelper\Mutex.h" />
+    <ClInclude Include="src\MusicLib\DownHelper\ThreadHelper.h" />
+    <ClInclude Include="src\MusicLib\DownloadItem\DownloadItem.h" />
+    <ClInclude Include="src\MusicLib\HTTPprotocol\HTTPprotocol.h" />
+    <ClInclude Include="src\MusicLib\jsHandler.h" />
+    <ClInclude Include="src\MusicLib\MusicLib.h" />
+    <ClInclude Include="src\MvFolder\MediaPlayerWnd.h" />
+    <ClInclude Include="src\MvFolder\UIMedia.h" />
+    <ClInclude Include="src\PlayListItem\YPlayListItem.h" />
+    <ClInclude Include="src\PlayMgr\audioinfo.h" />
+    <ClInclude Include="src\PlayMgr\AVPlayer.h" />
+    <ClInclude Include="src\PlayMgr\PlayListMgr.h" />
+    <ClInclude Include="src\Property\PropertyWin.h" />
+    <ClInclude Include="src\RuntimeState\RuntimeState.h" />
+    <ClInclude Include="src\SearchLrcWindow\SearchLrcWindow.h" />
+    <ClInclude Include="src\Setting\ConfigBase.h" />
+    <ClInclude Include="src\Setting\ConfigMgr.h" />
+    <ClInclude Include="src\Setting\LrcPreview.h" />
+    <ClInclude Include="src\Setting\SettingWindow.h" />
+    <ClInclude Include="src\Share\ShareWin.h" />
+    <ClInclude Include="src\SkinWindow\MySkinLayout.h" />
+    <ClInclude Include="src\SkinWindow\SkinJsHandler.h" />
+    <ClInclude Include="src\SkinWindow\SkinWindow.h" />
+    <ClInclude Include="src\SkinWindow\SysSkinLayout.h" />
+    <ClInclude Include="src\SongListItem\YSongListItem.h" />
+    <ClInclude Include="src\TagModify\TagModifyWin.h" />
+    <ClInclude Include="src\Utilty\base\Buffer.h" />
+    <ClInclude Include="src\Utilty\base\CLock.h" />
+    <ClInclude Include="src\Utilty\base\CMemPool.h" />
+    <ClInclude Include="src\Utilty\base\CXString.h" />
+    <ClInclude Include="src\Utilty\base\YTingRuntime.h" />
+    <ClInclude Include="src\Utilty\Convert\Convert.h" />
+    <ClInclude Include="src\Utilty\down_http_file.h" />
+    <ClInclude Include="src\Utilty\encrypt\base64.h" />
+    <ClInclude Include="src\Utilty\encrypt\encrypt.h" />
+    <ClInclude Include="src\Utilty\encrypt\url.h" />
+    <ClInclude Include="src\Utilty\json\DataParser.h" />
+    <ClInclude Include="src\Utilty\json\include\autolink.h" />
+    <ClInclude Include="src\Utilty\json\include\config.h" />
+    <ClInclude Include="src\Utilty\json\include\features.h" />
+    <ClInclude Include="src\Utilty\json\include\forwards.h" />
+    <ClInclude Include="src\Utilty\json\include\json.h" />
+    <ClInclude Include="src\Utilty\json\include\reader.h" />
+    <ClInclude Include="src\Utilty\json\include\value.h" />
+    <ClInclude Include="src\Utilty\json\include\writer.h" />
+    <ClInclude Include="src\Utilty\json\lib_json\json_batchallocator.h" />
+    <ClInclude Include="src\Utilty\lock\RzLock.h" />
+    <ClInclude Include="src\Utilty\log\log.h" />
+    <ClInclude Include="src\Utilty\md5_checksum.h" />
+    <ClInclude Include="src\Utilty\mt_helper.h" />
+    <ClInclude Include="src\Utilty\ResGuard.h" />
+    <ClInclude Include="src\Utilty\Singleton.h" />
+    <ClInclude Include="src\Utilty\SmartPtr.h" />
+    <ClInclude Include="src\Utilty\Thread.h" />
+    <ClInclude Include="src\Utilty\tinyxml\tinystr.h" />
+    <ClInclude Include="src\Utilty\tinyxml\tinyxml.h" />
+    <ClInclude Include="src\Utilty\UrlPraser.h" />
+    <ClInclude Include="src\Utilty\win_io\FileMgr.h" />
+    <ClInclude Include="src\Utilty\win_io\io_interface.h" />
+    <ClInclude Include="src\Utilty\win_io\win_io_base.h" />
+    <ClInclude Include="src\Variable\Var.h" />
+    <ClInclude Include="src\WebService\HttpCenter.h" />
+    <ClInclude Include="src\WebService\HttpManager.h" />
+    <ClInclude Include="src\WebService\HttpThread.h" />
+    <ClInclude Include="src\WebService\Link.h" />
+    <ClInclude Include="src\WebService\ResponseParser2.h" />
+    <ClInclude Include="src\WebService\ServerManager.h" />
+    <ClInclude Include="src\WebService\sock.h" />
+    <ClInclude Include="src\WebService\UrlService.h" />
+    <ClInclude Include="src\WebService\WebService.h" />
+    <ClInclude Include="src\WebService\WebServiceCatch.h" />
+    <ClInclude Include="src\YApp.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="YMusic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="YMusic.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico" />
+    <Image Include="YMusic.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp" />
+    <ClCompile Include="..\..\DuiLib\DuiLib\Utils\trayIcon.cpp" />
+    <ClCompile Include="src\BaseWindow\BaseWindow.cpp" />
+    <ClCompile Include="src\BaseWindow\InfoWindow.cpp" />
+    <ClCompile Include="src\CacheMgr\CacheMgr.cpp" />
+    <ClCompile Include="src\DataBase\Database.cpp" />
+    <ClCompile Include="src\DataBase\DatabaseManager.cpp" />
+    <ClCompile Include="src\DataBase\ShareData.cpp" />
+    <ClCompile Include="src\DesktopLrc\DesktopLrcWindow.cpp" />
+    <ClCompile Include="src\DesktopLrc\LrcMask.cpp" />
+    <ClCompile Include="src\DesktopLrc\LrcToolBar.cpp" />
+    <ClCompile Include="src\FilePathMgr\FilePathMgr.cpp" />
+    <ClCompile Include="src\Login\LoginWindow.cpp" />
+    <ClCompile Include="src\Login\WebLoginWindow.cpp" />
+    <ClCompile Include="src\LrcMgr\lrcFileReader.cpp" />
+    <ClCompile Include="src\LrcMgr\LrcMgr.cpp" />
+    <ClCompile Include="src\LrcMgr\ParseXmlFile.cpp" />
+    <ClCompile Include="src\LrcMgr\SearchLrcFromWeb.cpp" />
+    <ClCompile Include="src\LrcSelectWnd\LrcSelectWnd.cpp" />
+    <ClCompile Include="src\LrcView\LrcView.cpp" />
+    <ClCompile Include="src\MainWindow\YMainWindow.cpp" />
+    <ClCompile Include="src\MenuWindow\MainMenu.cpp" />
+    <ClCompile Include="src\MusicLib\DownHelper\ThreadHelper.cpp" />
+    <ClCompile Include="src\MusicLib\DownloadItem\DownloadItem.cpp" />
+    <ClCompile Include="src\MusicLib\HTTPprotocol\HTTPprotocol.cpp" />
+    <ClCompile Include="src\MusicLib\jsHandler.cpp" />
+    <ClCompile Include="src\MusicLib\MusicLib.cpp" />
+    <ClCompile Include="src\MvFolder\MediaPlayerWnd.cpp" />
+    <ClCompile Include="src\MvFolder\UIMedia.cpp" />
+    <ClCompile Include="src\PlayListItem\YPlayListItem.cpp" />
+    <ClCompile Include="src\PlayMgr\audioinfo.cpp" />
+    <ClCompile Include="src\PlayMgr\AVPlayer.cpp" />
+    <ClCompile Include="src\PlayMgr\PlayListMgr.cpp" />
+    <ClCompile Include="src\Property\PropertyWin.cpp" />
+    <ClCompile Include="src\RuntimeState\RuntimeState.cpp" />
+    <ClCompile Include="src\SearchLrcWindow\SearchLrcWindow.cpp" />
+    <ClCompile Include="src\Setting\ConfigBase.cpp" />
+    <ClCompile Include="src\Setting\ConfigMgr.cpp" />
+    <ClCompile Include="src\Setting\LrcPreview.cpp" />
+    <ClCompile Include="src\Setting\SettingWindow.cpp" />
+    <ClCompile Include="src\Share\ShareWin.cpp" />
+    <ClCompile Include="src\SkinWindow\MySkinLayout.cpp" />
+    <ClCompile Include="src\SkinWindow\SkinJsHandler.cpp" />
+    <ClCompile Include="src\SkinWindow\SkinWindow.cpp" />
+    <ClCompile Include="src\SkinWindow\SysSkinLayout.cpp" />
+    <ClCompile Include="src\SongListItem\YSongListItem.cpp" />
+    <ClCompile Include="src\TagModify\TagModifyWin.cpp" />
+    <ClCompile Include="src\Utilty\base\Buffer.cpp" />
+    <ClCompile Include="src\Utilty\base\CXString.cpp" />
+    <ClCompile Include="src\Utilty\base\YTingRuntime.cpp" />
+    <ClCompile Include="src\Utilty\Convert\Convert.cpp" />
+    <ClCompile Include="src\Utilty\down_http_file.cpp" />
+    <ClCompile Include="src\Utilty\json\DataParser.cpp" />
+    <ClCompile Include="src\Utilty\json\lib_json\json_reader.cpp" />
+    <ClCompile Include="src\Utilty\json\lib_json\json_value.cpp" />
+    <ClCompile Include="src\Utilty\json\lib_json\json_writer.cpp" />
+    <ClCompile Include="src\Utilty\lock\RzLock.cpp" />
+    <ClCompile Include="src\Utilty\log\log.cpp" />
+    <ClCompile Include="src\Utilty\md5_checksum.cpp" />
+    <ClCompile Include="src\Utilty\mt_helper.cpp" />
+    <ClCompile Include="src\Utilty\ResGuard.cpp" />
+    <ClCompile Include="src\Utilty\Singleton.cpp" />
+    <ClCompile Include="src\Utilty\Thread.cpp" />
+    <ClCompile Include="src\Utilty\tinyxml\tinystr.cpp" />
+    <ClCompile Include="src\Utilty\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="src\Utilty\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="src\Utilty\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="src\Utilty\UrlPraser.cpp" />
+    <ClCompile Include="src\Utilty\win_io\FileMgr.cpp" />
+    <ClCompile Include="src\Utilty\win_io\io_interface.cpp" />
+    <ClCompile Include="src\Utilty\win_io\win_io_base.cpp" />
+    <ClCompile Include="src\Variable\Var.cpp" />
+    <ClCompile Include="src\WebService\HttpCenter.cpp" />
+    <ClCompile Include="src\WebService\HttpManager.cpp" />
+    <ClCompile Include="src\WebService\HttpThread.cpp" />
+    <ClCompile Include="src\WebService\Link.cpp" />
+    <ClCompile Include="src\WebService\ResponseParser2.cpp" />
+    <ClCompile Include="src\WebService\ServerManager.cpp" />
+    <ClCompile Include="src\WebService\sock.cpp" />
+    <ClCompile Include="src\WebService\UrlService.cpp" />
+    <ClCompile Include="src\WebService\WebService.cpp" />
+    <ClCompile Include="src\WebService\WebServiceCatch.cpp" />
+    <ClCompile Include="src\YApp.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="YMusic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Utilty\json\lib_json\json_internalarray.inl" />
+    <None Include="src\Utilty\json\lib_json\json_internalmap.inl" />
+    <None Include="src\Utilty\json\lib_json\json_valueiterator.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
