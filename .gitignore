@@ -19,4 +19,8 @@
 *.idb
 *.pch
 *.user
+*.sdf
+*.ipch
+*.ilk
+*.exp
 *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo __pycache__ *.rej *~ #*# .#* .*.swp .DS_Store *.ilk *.tlog *.log *.lastbuildstate *.pch *.pdb *.cache *.tlh *.obj *.pch *. *.exp *.idb *.opensdf *.mainfest
