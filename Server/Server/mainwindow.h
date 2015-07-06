@@ -20,6 +20,8 @@ public:
 	~CMainWindow();
 	static const LPCTSTR CLASSNAME;
 public:
+	LPCTSTR GetClass() const;
+	bool IsClass(LPCTSTR pstrClass);
 	LPCTSTR GetWindowClassName() const;
 	CControlUI* CreateControl(LPCTSTR pstrClass);
 	virtual void Notify( TNotifyUI &msg );

@@ -7,10 +7,10 @@
 #include "ClientSocket.h"
 #include "ListeningSocket.h"
 #include "Msg.h"
-#include "DuiLib/UIMenu.h"
+//#include "DuiLib/Extend/Menu/UIMenu.h"
 #include "config.h"
 #include "log.h"
-#include "ColorPicker.h"
+//#include "ColorPicker.h"
 
 namespace sysbtn
 {
@@ -111,6 +111,14 @@ CMainWindow::~CMainWindow()
 		delete theDB;
 		theDB = NULL;
 	}
+}
+LPCTSTR CMainWindow::GetClass() const
+{
+	return _T("MainWindow");
+}
+bool CMainWindow::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("MainWindow")) == 0);
 }
 LPCTSTR CMainWindow::GetWindowClassName() const
 {

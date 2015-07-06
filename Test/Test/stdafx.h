@@ -28,8 +28,11 @@
 #define _USE_DUILIB_
 #endif
 
-#include "DuiLib\UIlib.h"
-using namespace DuiLib;
+#define  _CONSOLE
+#define _VSOUTPUT
+//#include <lua.hpp>
+//#include "DuiLib\UIlib.h"
+//using namespace DuiLib;
 // #ifdef _DEBUG
 // #   ifdef _UNICODE
 // #       pragma comment(lib, "DuiLib_ud.lib")
@@ -43,3 +46,18 @@ using namespace DuiLib;
 // #       pragma comment(lib, "..\\Lib\\DuiLib.lib")
 // #   endif
 // #endif
+#include "LuaDuiLib\LuaDuiLib.h"
+using namespace DuiLib;
+#ifdef _DEBUG
+#   ifdef _UNICODE
+#       pragma comment(lib, "LuaDuiLib_ud.lib")
+#   else
+#       pragma comment(lib, "LuaDuiLib_d.lib")
+#   endif
+#else
+#   ifdef _UNICODE
+#       pragma comment(lib, "..\\Lib\\DuiLib_u.lib")
+#   else
+#       pragma comment(lib, "..\\Lib\\DuiLib.lib")
+#   endif
+#endif

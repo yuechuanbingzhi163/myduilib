@@ -38,13 +38,16 @@ union DuiMessageMapFunctions
 
 //定义所有消息类型
 //////////////////////////////////////////////////////////////////////////
+#define DUI_MSGTYPE_MAXMIN                   (_T("maxmin"))
 
 #define DUI_MSGTYPE_MENU                   (_T("menu"))
 #define DUI_MSGTYPE_LINK                   (_T("link"))
 
 #define DUI_MSGTYPE_TIMER                  (_T("timer"))
 #define DUI_MSGTYPE_CLICK                  (_T("click"))
+#define DUI_MSGTYPE_RCLICK                  (_T("rclick"))
 #define DUI_MSGTYPE_DBCLICK                (_T("dbclick"))
+#define DUI_MSGTYPE_RDBCLICK                (_T("rdbclick"))
 
 #define DUI_MSGTYPE_RETURN                 (_T("return"))
 #define DUI_MSGTYPE_SCROLL                 (_T("scroll"))

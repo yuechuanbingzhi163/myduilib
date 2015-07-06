@@ -1,5 +1,10 @@
 #include "stdafx.h"
+
 #include "Utils.h"
+
+#include <atlconv.h>  
+#include <atlbase.h>
+#include <atlstr.h>
 
 namespace DuiLib
 {
@@ -7,6 +12,15 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
+
+	LPCTSTR CPoint::GetClass() const
+	{
+		return _T("Point");
+	}
+	bool CPoint::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("Point")) == 0);
+	}
 
 	CPoint::CPoint()
 	{
@@ -35,6 +49,14 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
+	LPCTSTR CSize::GetClass() const
+	{
+		return _T("Size");
+	}
+	bool CSize::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("Size")) == 0);
+	}
 
 	CSize::CSize()
 	{
@@ -63,6 +85,14 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
+	LPCTSTR CDuiRect::GetClass() const
+	{
+		return _T("DuiRect");
+	}
+	bool CDuiRect::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("DuiRect")) == 0);
+	}
 
 	CDuiRect::CDuiRect()
 	{
@@ -148,6 +178,18 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
+	LPCTSTR CStdPtrArray::GetClass() const
+	{
+		return _T("StdPtrArray");
+	}
+	LPCTSTR CStdPtrArray::GetClassName()
+	{
+		return _T("StdPtrArray");
+	}
+	bool    CStdPtrArray::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("StdPtrArray")) == 0);
+	}
 
 	CStdPtrArray::CStdPtrArray(int iPreallocSize) : m_ppVoid(NULL), m_nCount(0), m_nAllocated(iPreallocSize)
 	{
@@ -274,6 +316,10 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
+	LPCTSTR CStdValArray::GetClass() const
+	{
+		return _T("StdValArray");
+	}
 
 	CStdValArray::CStdValArray(int iElementSize, int iPreallocSize /*= 0*/) : 
 	m_pVoid(NULL), 
@@ -353,7 +399,14 @@ namespace DuiLib
 	/////////////////////////////////////////////////////////////////////////////////////
 	//
 	//
-
+	LPCTSTR CDuiString::GetClass() const
+	{
+		return _T("DuiString");
+	}
+	bool    CDuiString::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("DuiString")) == 0);
+	}
 	CDuiString::CDuiString() : m_pstr(m_szBuffer)
 	{
 		m_szBuffer[0] = '\0';
@@ -380,7 +433,7 @@ namespace DuiLib
 
 	CDuiString::~CDuiString()
 	{
-		if( m_pstr != m_szBuffer ) free(m_pstr);
+		if( m_pstr != m_szBuffer && m_pstr != NULL) free(m_pstr);
 	}
 
 	int CDuiString::GetLength() const
@@ -789,38 +842,87 @@ namespace DuiLib
 
 	void CDuiString::AssignChar(const char* pstr, int cchMax)
 	{
-		if( pstr == NULL ) pstr = ("");
-#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WIN64) || defined(WIN64) || defined(__WIN64__)
-		int size = MultiByteToWideChar(::GetACP(), 0, pstr, -1, NULL, 0)-1;
+		if( pstr == NULL ) pstr = ("");		
+#ifdef _UNICODE
+		int len = strlen(pstr);
+		if (cchMax > 0 && cchMax < len)
+			len = cchMax;
+		char* p = new char[len + 1];
+		memcpy(p, pstr, len);
+		p[len] = '\0';
+		CDuiString ret = DuiString::UTF8ToUnicode(p);
+		Assign(ret.GetData());
+		delete[]p;
 #else
-		size_t size = wcstombs(NULL, pstr 0);
+		Assign(pstr, cchMax);
 #endif
-		std::wstring wstr(size, wchar_t(0));
-#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WIN64) || defined(WIN64) || defined(__WIN64__)
-		MultiByteToWideChar(::GetACP(), 0, pstr, strlen(pstr), const_cast<wchar_t*>(wstr.c_str()), size);
-#	else
-		mbstowcs(const_cast<wchar_t*>(wstr.c_str()), pstr, size);
-#	endif
+	}
 
-		LPCTSTR pst = (LPCTSTR)wstr.c_str();
-		Assign(pst);
-		
+	CDuiString& CDuiString::AssignString(const char* pstr, int nLength /* = -1 */)
+	{
+		static CDuiString sReturn;
+		sReturn.AssignChar(pstr, nLength);
+		return sReturn;
 	}
 
 	std::string CDuiString::str() const
 	{
-		std::string s_result("");
-		int dwMinSize;
-		dwMinSize = WideCharToMultiByte(::GetACP(),NULL,(LPCWSTR)m_pstr,-1,NULL,0,NULL,FALSE); //���㳤��
-		char *panelName= new char[dwMinSize+1];
-		panelName[0] = '\0';
-		WideCharToMultiByte(::GetACP(),NULL,(LPCWSTR)m_pstr,-1,panelName,dwMinSize,NULL,FALSE);
-		
-		s_result.assign(panelName);
-		delete panelName;
-		return s_result;
+#ifdef _UNICODE
+		return DuiString::UnicodeToUTF8((wchar_t*)m_pstr);
+#else
+		return std::string((char*)m_pstr);
+#endif
 	}
 
+	//************************************
+	// 函数名称: GetWString
+	// 返回类型: std::wstring
+	// 函数说明: 
+	//************************************
+	std::wstring CDuiString::GetWString()
+	{
+#ifdef _UNICODE
+		return GetData();
+#else
+		std::wstring nRetWS;
+		if (!this->IsEmpty())
+		{
+			nRetWS = CA2W(GetData());
+		}
+		return nRetWS;
+#endif // _UNICODE
+	}
+
+	//************************************
+	// 函数名称: GetAString
+	// 返回类型: std::string
+	// 函数说明: 
+	//************************************
+	std::string CDuiString::GetAString()
+	{
+#ifdef _UNICODE
+		if(!IsEmpty())
+		{
+			std::string nRetS = CW2A(GetData());
+			return nRetS;
+		}
+		return "";
+#else
+		return GetData();
+#endif // _UNICODE
+	}
+
+#ifdef _UNICODE
+	std::wstring CDuiString::GetString()
+	{
+		return GetWString();
+	}
+#else
+	std::string CDuiString::GetString()
+	{
+		return GetAString();
+	}
+#endif
 	/////////////////////////////////////////////////////////////////////////////
 	//
 	//
@@ -837,6 +939,15 @@ namespace DuiLib
 	{
 		return HashKey((LPCTSTR)Key);
 	};
+
+	LPCTSTR CStdStringPtrMap::GetClass() const
+	{
+		return _T("StdStringPtrMap");
+	}
+	bool    CStdStringPtrMap::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("StdStringPtrMap")) == 0);
+	}
 
 	CStdStringPtrMap::CStdStringPtrMap(int nSize) : m_nCount(0)
 	{
@@ -908,7 +1019,7 @@ namespace DuiLib
 					pItem->pPrev = NULL;
 					pItem->pNext = m_aT[slot];
 					pItem->pNext->pPrev = pItem;
-					//��item�ƶ�������ͷ��
+					//½«itemÒÆ¶¯ÖÁÁ´ÌõÍ·²¿
 					m_aT[slot] = pItem;
 				}
 				return pItem->Data;
@@ -1029,4 +1140,550 @@ namespace DuiLib
 		::SetCursor(m_hOrigCursor);
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//************************************
+	// 函数名称: CDuiImage
+	// 返回类型: 
+	// 函数说明: 
+	//************************************
+	CDuiImage::CDuiImage():m_iResType(0),m_bNeedDestRect(false),m_bHole(false),m_bTiledX(false),m_bTiledY(0),m_bFade(255),m_dwMask(0)
+	{
+		::ZeroMemory(&m_rcItem, sizeof(RECT));
+		::ZeroMemory(&m_rcSource, sizeof(RECT));
+		::ZeroMemory(&m_rcDest, sizeof(RECT));
+		::ZeroMemory(&m_rcCorner, sizeof(RECT));
+	}
+
+	//************************************
+	// 函数名称: CDuiImage
+	// 返回类型: 
+	// 参数信息: const CDuiString & src
+	// 函数说明: 
+	//************************************
+	CDuiImage::CDuiImage( const CDuiString& src )
+	{
+		SetImage(src);
+	}
+
+	//************************************
+	// 函数名称: CDuiImage
+	// 返回类型: 
+	// 参数信息: const CDuiImage & src
+	// 函数说明: 
+	//************************************
+	CDuiImage::CDuiImage( const CDuiImage& src )
+	{
+		SetImage(src);
+	}
+
+	//************************************
+	// 函数名称: CDuiImage
+	// 返回类型: 
+	// 参数信息: LPCTSTR lpsz
+	// 参数信息: int nLen
+	// 函数说明: 
+	//************************************
+	CDuiImage::CDuiImage( LPCTSTR lpsz, int nLen /*= -1*/ )
+	{
+		if(nLen <= 0)
+			SetImage(lpsz);
+		else 
+			SetImage(CDuiString(lpsz).Left(nLen));
+	}
+
+	//************************************
+	// 函数名称: ~CDuiImage
+	// 返回类型: 
+	// 函数说明: 
+	//************************************
+	CDuiImage::~CDuiImage()
+	{
+	}
+
+	//************************************
+	// 函数名称: ~CDuiImage
+	// 返回类型: 
+	// 函数说明: 
+	//************************************
+	LPCTSTR CDuiImage::GetClass() const
+	{
+		return _T("DuiImage");
+	}
+
+	//************************************
+	// 函数名称: SetResType
+	// 返回类型: void
+	// 参数信息: int _iResType
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetResType( int _iResType )
+	{
+		m_iResType = _iResType;
+	}
+
+	//************************************
+	// 函数名称: GetNeedDestRect
+	// 返回类型: bool
+	// 函数说明: 
+	//************************************
+	bool CDuiImage::GetNeedDestRect()
+	{
+		if(m_bNeedDestRect || ((m_rcDest.left == m_rcDest.right ) || (m_rcDest.top == m_rcDest.bottom)))
+			return true;
+		return false;
+	}
+
+	//************************************
+	// 函数名称: SetHole
+	// 返回类型: void
+	// 参数信息: bool _bHole
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetHole( bool _bHole )
+	{
+		m_bFade = _bHole;
+	}
+
+	//************************************
+	// 函数名称: SetTiledX
+	// 返回类型: void
+	// 参数信息: bool _bTiledX
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetTiledX( bool _bTiledX )
+	{
+		m_bTiledX = _bTiledX;
+	}
+
+	//************************************
+	// 函数名称: SetTiledY
+	// 返回类型: void
+	// 参数信息: bool _bTiledY
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetTiledY( bool _bTiledY )
+	{
+		m_bTiledY = _bTiledY;
+	}
+
+	//************************************
+	// 函数名称: SetFade
+	// 返回类型: void
+	// 参数信息: BYTE _bFade
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetFade( BYTE _bFade )
+	{
+		if(_bFade >= 0 && _bFade <= 255)
+			m_bFade = _bFade;
+	}
+
+	//************************************
+	// 函数名称: SetMask
+	// 返回类型: void
+	// 参数信息: DWORD _dwMask
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetMask( DWORD _dwMask )
+	{
+		m_dwMask = _dwMask;
+	}
+
+	//************************************
+	// 函数名称: SetControlRect
+	// 返回类型: void
+	// 参数信息: RECT _rcControl
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetControlRect( RECT _rcControl )
+	{
+		m_rcItem = _rcControl;
+		if(m_bNeedDestRect){
+			m_rcDest.left	+= m_rcItem.left;
+			m_rcDest.top	+= m_rcItem.top;
+			m_rcDest.right	+= m_rcItem.left;
+			m_rcDest.bottom	+= m_rcItem.top;
+
+			if(m_rcDest.right > m_rcItem.right)
+				m_rcDest.right	= m_rcItem.right;
+			if(m_rcDest.bottom > m_rcItem.bottom)
+				m_rcDest.bottom	= m_rcItem.bottom;
+		}
+		m_bNeedDestRect = false;
+	}
+
+	//************************************
+	// 函数名称: SetSource
+	// 返回类型: void
+	// 参数信息: RECT _rcSource
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetSource( RECT _rcSource )
+	{
+		m_rcSource = _rcSource;
+	}
+
+	//************************************
+	// 函数名称: SetDest
+	// 返回类型: void
+	// 参数信息: RECT _rcDest
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetDest( RECT _rcDest )
+	{
+		if((_rcDest.left == _rcDest.right ) || (_rcDest.top == _rcDest.bottom))
+			return;
+		m_rcDest = _rcDest;
+	}
+
+	//************************************
+	// 函数名称: SetCorner
+	// 返回类型: void
+	// 参数信息: RECT _rcCorner
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetCorner( RECT _rcCorner )
+	{
+		m_rcCorner = _rcCorner;
+	}
+
+	//************************************
+	// 函数名称: SetImage
+	// 返回类型: void
+	// 参数信息: LPCTSTR _strImage
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetImage( LPCTSTR _strImage )
+	{
+		m_bNeedDestRect = true;
+		SetImage(_strImage,m_rcItem);
+	}
+
+	//************************************
+	// 函数名称: SetImage
+	// 返回类型: void
+	// 参数信息: LPCTSTR _strImage
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetImage( LPCTSTR _strImage,RECT _rcControl )
+	{
+		if(!_strImage)
+			return;
+
+		CDuiString::Assign(_strImage);
+
+		CDuiString sItem;
+		CDuiString sValue;
+		LPTSTR pstr		= NULL;
+		m_sImageFile	= _strImage;
+		m_rcItem		= _rcControl;
+
+		while(*_strImage != _T('\0')){
+			sItem.Empty();
+			sValue.Empty();
+			while(*_strImage > _T('\0') && *_strImage <= _T(' '))
+				_strImage = ::CharNext(_strImage);
+
+			while(*_strImage != _T('\0') && *_strImage != _T('=') && *_strImage > _T(' ') ) {
+				LPTSTR pstrTemp = ::CharNext(_strImage);
+				while( _strImage < pstrTemp){
+					sItem += *_strImage++;
+				}
+			}
+			while(*_strImage > _T('\0') && *_strImage <= _T(' '))
+				_strImage = ::CharNext(_strImage);
+
+			if(*_strImage++ != _T('=') )
+				break;
+
+			while(*_strImage > _T('\0') && *_strImage <= _T(' '))
+				_strImage = ::CharNext(_strImage);
+
+			if(*_strImage++ != _T('\'') )
+				break;
+
+			while(*_strImage != _T('\0') && *_strImage != _T('\'')){
+				LPTSTR pstrTemp = ::CharNext(_strImage);
+				while(_strImage < pstrTemp)
+					sValue += *_strImage++;
+			}
+			if(*_strImage++ != _T('\'')) break;
+			if(!sValue.IsEmpty() ){
+				if(sItem == _T("file") || sItem == _T("res"))
+					m_sImageFile = sValue;
+				else if(sItem == _T("restype"))
+					m_sRes = sValue;
+				else if(sItem == _T("dest")){
+					if(m_bNeedDestRect)
+					{
+						m_rcDest.left = _tcstol(sValue.GetData(), &pstr, 10);  ASSERT(pstr);    
+						m_rcDest.top = _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr);
+						m_rcDest.right = _tcstol(pstr + 1, &pstr, 10);  ASSERT(pstr);
+						m_rcDest.bottom = _tcstol(pstr + 1, &pstr, 10); ASSERT(pstr);
+					}
+					else 
+					{
+						m_rcDest.left = m_rcItem.left + _tcstol(sValue.GetData(), &pstr, 10);  ASSERT(pstr);    
+						m_rcDest.top = m_rcItem.top + _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr);
+						m_rcDest.right = m_rcItem.left + _tcstol(pstr + 1, &pstr, 10);  ASSERT(pstr);
+						if (m_rcDest.right > m_rcItem.right)
+							m_rcDest.right = m_rcItem.right;
+
+						m_rcDest.bottom = m_rcItem.top + _tcstol(pstr + 1, &pstr, 10); ASSERT(pstr);
+						if (m_rcDest.bottom > m_rcItem.bottom)
+							m_rcDest.bottom = m_rcItem.bottom;
+					}
+				}
+				else if(sItem == _T("source")){
+					m_rcSource.left = _tcstol(sValue.GetData(), &pstr, 10);  ASSERT(pstr);    
+					m_rcSource.top = _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr);    
+					m_rcSource.right = _tcstol(pstr + 1, &pstr, 10);  ASSERT(pstr);    
+					m_rcSource.bottom = _tcstol(pstr + 1, &pstr, 10); ASSERT(pstr);  
+				}
+				else if(sItem == _T("corner")){
+					m_rcCorner.left = _tcstol(sValue.GetData(), &pstr, 10);  ASSERT(pstr);    
+					m_rcCorner.top = _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr);    
+					m_rcCorner.right = _tcstol(pstr + 1, &pstr, 10);  ASSERT(pstr);    
+					m_rcCorner.bottom = _tcstol(pstr + 1, &pstr, 10); ASSERT(pstr);
+				}
+				else if(sItem == _T("mask")){
+					if(sValue[0] == _T('#'))
+						m_dwMask	= _tcstoul(sValue.GetData() + 1, &pstr, 16);
+					else
+						m_dwMask	= _tcstoul(sValue.GetData(), &pstr, 16);
+				}
+				else if(sItem == _T("fade"))
+					m_bFade		= (BYTE)_tcstoul(sValue.GetData(), &pstr, 10);
+				else if(sItem == _T("hole"))
+					m_bHole		= (_tcscmp(sValue.GetData(), _T("true")) == 0);
+				else if(sItem == _T("xtiled"))
+					m_bTiledX	= (_tcscmp(sValue.GetData(), _T("true")) == 0);
+				else if( sItem == _T("ytiled"))
+					m_bTiledY	= (_tcscmp(sValue.GetData(), _T("true")) == 0);
+			}
+			if( *_strImage++ != _T(' ') ) break;
+		}
+	}
+
+	//************************************
+	// 函数名称: SetRes
+	// 返回类型: void
+	// 参数信息: LPCTSTR _strResType
+	// 函数说明: 
+	//************************************
+	void CDuiImage::SetRes( LPCTSTR _strResType )
+	{
+		if(!_strResType)
+			m_sRes.Empty();
+
+		m_sRes = _strResType;
+	}
+
+	//************************************
+	// 函数名称: GetIntResType
+	// 返回类型: int
+	// 函数说明: 
+	//************************************
+	int CDuiImage::GetResType()
+	{
+		return m_iResType;
+	}
+
+	//************************************
+	// 函数名称: GetHole
+	// 返回类型: bool
+	// 函数说明: 
+	//************************************
+	bool CDuiImage::GetHole()
+	{
+		return m_bHole;
+	}
+
+	//************************************
+	// 函数名称: GetTiledX
+	// 返回类型: bool
+	// 函数说明: 
+	//************************************
+	bool CDuiImage::GetTiledX()
+	{
+		return m_bTiledX;
+	}
+
+	//************************************
+	// 函数名称: GetTiledY
+	// 返回类型: bool
+	// 函数说明: 
+	//************************************
+	bool CDuiImage::GetTiledY()
+	{
+		return m_bTiledY;
+	}
+
+	//************************************
+	// 函数名称: GetFade
+	// 返回类型: BYTE
+	// 函数说明: 
+	//************************************
+	BYTE CDuiImage::GetFade()
+	{
+		return m_bFade;
+	}
+
+	//************************************
+	// 函数名称: GetMask
+	// 返回类型: DWORD
+	// 函数说明: 
+	//************************************
+	DWORD CDuiImage::GetMask()
+	{
+		return m_dwMask;
+	}
+
+	//************************************
+	// 函数名称: GetSource
+	// 返回类型: RECT
+	// 函数说明: 
+	//************************************
+	RECT CDuiImage::GetSource()
+	{
+		return m_rcSource;
+	}
+
+	//************************************
+	// 函数名称: GetDest
+	// 返回类型: RECT
+	// 函数说明: 
+	//************************************
+	RECT CDuiImage::GetDest()
+	{
+		if((m_rcDest.left == m_rcDest.right ) || (m_rcDest.top == m_rcDest.bottom))
+			return m_rcItem;
+		return m_rcDest;
+	}
+
+	//************************************
+	// 函数名称: GetCorner
+	// 返回类型: RECT
+	// 函数说明: 
+	//************************************
+	RECT CDuiImage::GetCorner()
+	{
+		return m_rcCorner;
+	}
+
+	//************************************
+	// 函数名称: GetRes
+	// 返回类型: CDuiString
+	// 函数说明: 
+	//************************************
+	CDuiString CDuiImage::GetRes()
+	{
+		return m_sRes;
+	}
+
+	//************************************
+	// 函数名称: GetImagePath
+	// 返回类型: CDuiString
+	// 函数说明: 
+	//************************************
+	CDuiString CDuiImage::GetImagePath()
+	{
+		return m_sImageFile;
+	}
+
+	//************************************
+	// 函数名称: GetImageSetting
+	// 返回类型: DuiString
+	// 函数说明: 
+	//************************************
+	CDuiString CDuiImage::GetImageSetting()
+	{
+		if(m_sImageFile.IsEmpty() && m_sRes.IsEmpty())
+			return _T("");
+
+		CDuiString mImageSetting;
+		mImageSetting.Format(_T("file='%s'"),m_sImageFile.GetData());
+		if(!m_sRes.IsEmpty())
+			mImageSetting.Format(_T(" %s res='%s'"),mImageSetting.GetData(),m_sRes.GetData());
+		mImageSetting.Format(_T(" %s dest='%d,%d,%d,%d'"),mImageSetting.GetData(),m_rcDest.left,m_rcDest.top,m_rcDest.right,m_rcDest.bottom);
+		mImageSetting.Format(_T(" %s source='%d,%d,%d,%d'"),mImageSetting.GetData(),m_rcSource.left,m_rcSource.top,m_rcSource.right,m_rcSource.bottom);
+		mImageSetting.Format(_T(" %s corner='%d,%d,%d,%d'"),mImageSetting.GetData(),m_rcCorner.left,m_rcCorner.top,m_rcCorner.right,m_rcCorner.bottom);
+		if(!m_dwMask)
+			mImageSetting.Format(_T(" %s mask='#FF%x%x%x'"),mImageSetting.GetData(),GetRValue(m_dwMask),GetGValue(m_dwMask),GetBValue(m_dwMask));
+		mImageSetting.Format(_T(" %s fade='%d'"),mImageSetting.GetData(),m_bFade);
+		mImageSetting.Format(_T(" %s hole='%s'"),mImageSetting.GetData(),m_bHole?_T("true"):_T("false"));
+		mImageSetting.Format(_T(" %s xtiled='%s'"),mImageSetting.GetData(),m_bTiledX?_T("true"):_T("false"));
+		mImageSetting.Format(_T(" %s ytiled='%s'"),mImageSetting.GetData(),m_bTiledY?_T("true"):_T("false"));
+
+		return mImageSetting;
+	}
+
+	//************************************
+	// 函数名称: operator=
+	// 返回类型: const CDuiImage&
+	// 参数信息: const CDuiImage & src
+	// 函数说明: 
+	//************************************
+	const CDuiImage& CDuiImage::operator=( const CDuiImage& src )
+	{
+		SetImage(src.GetData());
+		return *this;
+	}
+
+	//************************************
+	// 函数名称: operator=
+	// 返回类型: const CDuiImage&
+	// 参数信息: LPCTSTR pstr
+	// 函数说明: 
+	//************************************
+	const CDuiImage& CDuiImage::operator=( LPCTSTR pstr )
+	{
+		SetImage(pstr);
+		return *this;
+	}
+
+	//************************************
+	// 函数名称: operator==
+	// 返回类型: bool
+	// 参数信息: CDuiImage& src
+	// 函数说明: 
+	//************************************
+	bool CDuiImage::operator==(CDuiImage& src)
+	{
+		return GetImagePath() == src.GetImagePath();
+	}
+	bool CDuiImage::operator==(CDuiString& src)
+	{
+		return GetImagePath() == src;
+	}
+
+	CDuiImage::operator LPCTSTR() const
+	{
+		return m_sImageFile;
+	}
+	///////////////////////////////////////////////////////////////////////
+	//
+	CDuiImageEx::CDuiImageEx() :m_iResType(0), m_bNeedDestRect(false), m_bHole(false), m_bTiledX(false), m_bTiledY(0), m_bFade(255), m_dwMask(0)
+	{
+		::ZeroMemory(&m_rcItem, sizeof(RECT));
+		::ZeroMemory(&m_rcSource, sizeof(RECT));
+		::ZeroMemory(&m_rcDest, sizeof(RECT));
+		::ZeroMemory(&m_rcCorner, sizeof(RECT));
+	}
+
+	CDuiImageEx::CDuiImageEx(const CDuiImageEx& src)
+	{
+		
+	}
+
+	CDuiImageEx::CDuiImageEx(LPCTSTR lpsz, int nLen /*= -1*/)
+	{
+		
+	}
+
+	CDuiImageEx::~CDuiImageEx()
+	{
+	}
 } // namespace DuiLib

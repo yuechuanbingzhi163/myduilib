@@ -3,7 +3,7 @@
 #include <assert.h>
 
 namespace DuiLib {
-	CWin::CWin():_paintManager(NULL),_pTag(NULL)
+	CWin::CWin() :_paintManager(NULL), _pTag(NULL), _bValid(FALSE)
 	{
 
 	}
@@ -13,6 +13,14 @@ namespace DuiLib {
 		UnRegisterSkin();
 		if(IsWindow())
 			DestroyWindow();
+	}
+	LPCTSTR CWin::GetClass() const
+	{
+		return _T("Win");
+	}
+	bool CWin::IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, _T("Win")) == 0);
 	}
 	LPCTSTR CWin::GetWindowClassName() const
 	{
@@ -24,8 +32,9 @@ namespace DuiLib {
 	}
 	void CWin::OnFinalMessage( HWND hWnd )
 	{
-		UnRegisterSkin();
-		__super::OnFinalMessage(hWnd);	
+		__super::OnFinalMessage(hWnd);
+		_bValid = FALSE;
+		UnRegisterSkin();	
 	}
 
 	DWORD CWin::GetStyle() const
@@ -84,6 +93,7 @@ namespace DuiLib {
 			return FALSE;
 
 		m_hWnd = NULL;
+		_bValid = FALSE;
 		return TRUE;
 	}
 
@@ -580,6 +590,7 @@ namespace DuiLib {
 
 	bool CWin::RegisterSkin(STRINGorID xml, LPCTSTR type /* = NULL */, IDialogBuilderCallback* pCallback /* = NULL */, CControlUI* pParent /* = NULL */)
 	{
+		DuiLogInfo("RegisterSkin xml:%s,type:%s", (LPCTSTR)xml,(type == NULL ? _T("0"): type));
 		assert(IsWindow());
 		assert(IsMainThread());
 
@@ -589,9 +600,18 @@ namespace DuiLib {
 		_paintManager->Init(m_hWnd);
 		CDialogBuilder builder;
 		CControlUI* pRoot = builder.Create(xml,type,pCallback,_paintManager,pParent);
-		ASSERT(pRoot && "Failed to parse XML");
-		if(pRoot)
+		if (!pRoot)
+			DuiLogError("RegisterSkin xml:%s,type:%s", (LPCTSTR)xml, (type == NULL ? _T("0") : type));
+		CDuiString sError = CDuiString::FormatString(_T("Failed to parse XML:%s"), (LPCTSTR)xml);
+		char serror[MAX_PATH] = { 0 };
+		sprintf_s(serror, MAX_PATH, "Failed to parse XML:%s", (LPCTSTR)xml);
+		//ASSERT(pRoot && "Failed to parse XML");
+		DuiAssertX(pRoot, serror);
+		if (pRoot)
+		{
+			_bValid = TRUE;
 			return _paintManager->AttachDialog(pRoot);
+		}
 		return false;
 	}
 	void CWin::UnRegisterSkin()
@@ -601,6 +621,18 @@ namespace DuiLib {
 			delete _paintManager;
 			_paintManager = NULL;
 		}
+	}
+	bool CWin::ExistsSkinFile(STRINGorID xml, LPCTSTR type)
+	{
+		return CPaintManagerUI::ExistsSkinFile(xml, type);
+	}
+	BOOL CWin::IsValid() const
+	{
+		return _bValid;
+	}
+	void CWin::SetValid(BOOL bValid)
+	{
+		_bValid = bValid;
 	}
 	UINT_PTR CWin::GetTag() const
 	{
@@ -628,6 +660,10 @@ namespace DuiLib {
 	}
 
 #if defined(WIN32) && !defined(UNDER_CE)
+	//LRESULT CWin::OnNcCreate(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHandled)
+	//{
+	//	return 0;
+	//}
 	LRESULT CWin::OnNCMouseMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 	{
 //		bHandled = FALSE;
@@ -815,6 +851,16 @@ namespace DuiLib {
 		LRESULT lRes = CWindowWnd::HandleMessage(uMsg, wParam, lParam);
 		if( IsZoomed()!= bZoomed )
 		{
+			if (!bZoomed)
+			{
+				CControlUI* pRoot = _paintManager->GetRoot();
+				_paintManager->SendNotify(pRoot, DUI_MSGTYPE_MAXMIN,1);
+			}
+			else
+			{
+				CControlUI* pRoot = _paintManager->GetRoot();
+				_paintManager->SendNotify(pRoot, DUI_MSGTYPE_MAXMIN,0);
+			}
 		}
 #else
 		LRESULT lRes = CWindowWnd::HandleMessage(uMsg, wParam, lParam);
@@ -924,6 +970,7 @@ namespace DuiLib {
 		case WM_CLOSE:			lRes = OnClose(uMsg, wParam, lParam, bHandled); break;
 		case WM_DESTROY:		lRes = OnDestroy(uMsg, wParam, lParam, bHandled); break;
 #if defined(WIN32) && !defined(UNDER_CE)
+		//case WM_NCCREATE:		lRes = OnNcCreate(uMsg, wParam, lParam, bHandled); break;
 		case WM_NCMOUSEMOVE:    lRes = OnNCMouseMove(uMsg, wParam, lParam, bHandled); break;
 		case WM_NCMOUSELEAVE:   lRes = OnNCMouseLeave(uMsg, wParam, lParam, bHandled); break;
 		case WM_NCACTIVATE:		lRes = OnNcActivate(uMsg, wParam, lParam, bHandled); break;
@@ -967,9 +1014,24 @@ namespace DuiLib {
 
 	LRESULT CWin::ProcessWindowMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 	{
-		LRESULT lRes = 0;
-		
-		return lRes;
+		if (_paintManager && _paintManager->GetEventSource()){
+			TEventUI mEvent = { 0 };
+			mEvent.Type = uMsg;
+			mEvent.lParam = lParam;
+			mEvent.wParam = wParam;
+			mEvent.ptMouse.x = 0;
+			mEvent.ptMouse.y = 0;
+			mEvent.wKeyState = 0;
+			mEvent.dwTimestamp = GetTickCount();
+			mEvent.pSender = NULL;
+			mEvent.chKey = NULL;
+
+			bHandled = !_paintManager->GetEventSource()(&mEvent);
+
+			return bHandled;
+		}
+		bHandled = FALSE;
+		return 0;
 	}
 	/************************************************************************/
 	/*                                                                      */
@@ -1073,7 +1135,8 @@ namespace DuiLib {
 			 {
 				 _bShakeWindow = false;
 				 ModifyStyle(WS_CAPTION,WS_CLIPSIBLINGS | WS_CLIPCHILDREN);
-				 if(!RegisterSkin(_T("MsgBox.xml"),0))
+				 //if(!RegisterSkin(_T("MsgBox.xml"),0))
+				 if (!RegisterSkin(STRINGorID(g_dllModule,ID_SKIN_MSGBOX), _T("XML")))
 					 return 0;
 
 				 GetPaintMgr()->AddNotifier(this);

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window size="300,600" mininfo="300,500" caption="0,0,0,100" sizebox="4,4,4,4" roundcorner="4,4">
+  <HorizontalLayout name="bg" bkimage="" >
+    <VerticalLayout name="bg_corner" bkimage="">
+      <!--caption-->
+      <HorizontalLayout height="100">
+        
+      </HorizontalLayout>
+    </VerticalLayout>
+  </HorizontalLayout>
+</Window>

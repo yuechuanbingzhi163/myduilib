@@ -108,7 +108,18 @@ CMarkupNode CMarkupNode::GetParent()
     if( iPos == 0 ) return CMarkupNode();
     return CMarkupNode(m_pOwner, iPos);
 }
-
+LPCTSTR CMarkupNode::GetClass() const
+{
+	return CMarkupNode::GetClassName();
+}
+bool CMarkupNode::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("MarkupNode")) == 0);
+}
+LPCTSTR CMarkupNode::GetClassName()
+{
+	return _T("MarkupNode");
+}
 bool CMarkupNode::IsValid() const
 {
     return m_pOwner != NULL;
@@ -235,6 +246,18 @@ CMarkup::CMarkup(LPCTSTR pstrXML)
 CMarkup::~CMarkup()
 {
     Release();
+}
+bool CMarkup::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("Markup")) == 0);
+}
+LPCTSTR CMarkup::GetClass() const
+{
+	return CMarkup::GetClassName();
+}
+LPCTSTR CMarkup::GetClassName()
+{
+	return _T("Markup");
 }
 
 bool CMarkup::IsValid() const

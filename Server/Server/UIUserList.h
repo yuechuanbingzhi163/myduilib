@@ -21,6 +21,9 @@ double CalculateDelay(double state);
 class CUserListUI : public CListUI
 {
 public:
+	LPCTSTR GetClass() const;
+	bool IsClass(LPCTSTR pstrClass);
+
 	enum {SCROLL_TIMERID = 10};
 
 	CUserListUI(CPaintManagerUI& paint_manager);

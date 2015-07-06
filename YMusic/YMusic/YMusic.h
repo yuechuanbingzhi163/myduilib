@@ -88,6 +88,6 @@ namespace DuiLib
 #include "./src/WebService/WebService.h"
 
 #include "./src/BaseWindow/InfoWindow.h"
+#include "./src/BaseWindow/trayIcon.h"
 
-#include "DuiLib/Utils/trayIcon.h"
 

@@ -65,7 +65,7 @@ namespace DuiLib
 			if( ::PtInRect(&m_rcItem, event.ptMouse) && IsEnabled() ) {
 				m_uButtonState |= UISTATE_PUSHED | UISTATE_CAPTURED;
 				if ( !m_sSoundNameDown.IsEmpty()){//Modify by dfn.li
-					CPaintManagerUI::PlaySound(m_sSoundNameDown.GetData());
+					CPaintManagerUI::PlayDuiSound(m_sSoundNameDown.GetData());
 				}
 				Invalidate();
 			}
@@ -101,7 +101,7 @@ namespace DuiLib
 			if( IsEnabled() ) {
 				m_uButtonState |= UISTATE_HOT;
 				if ( !m_sSoundNameOver.IsEmpty()){//Modify by dfn.li
-					CPaintManagerUI::PlaySound(m_sSoundNameOver.GetData());
+					CPaintManagerUI::PlayDuiSound(m_sSoundNameOver.GetData());
 				}
 				Invalidate();
 			}

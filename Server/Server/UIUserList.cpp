@@ -27,6 +27,15 @@ CUserListUI::~CUserListUI()
 
 }
 
+LPCTSTR CUserListUI::GetClass() const
+{
+	return _T("UserListUI");
+}
+bool CUserListUI::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("UserListUI")) == 0);
+}
+
 bool CUserListUI::Add(CControlUI* pControl)
 {
 	if (!pControl)

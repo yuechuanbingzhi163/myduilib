@@ -1,7 +1,7 @@
 #ifndef CHATDIALOG_HPP
 #define CHATDIALOG_HPP
 
-#include "DuiLib/skin_change_event.hpp"
+#include "skin_change_event.hpp"
 #include "Msg.h"
 #include "lock.h"
 

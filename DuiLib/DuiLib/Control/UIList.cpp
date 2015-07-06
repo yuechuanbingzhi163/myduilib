@@ -1207,6 +1207,15 @@ void CListBodyUI::DoEvent(TEventUI& event)
     if( m_pOwner != NULL ) m_pOwner->DoEvent(event); else CControlUI::DoEvent(event);
 }
 
+// add by rz.li
+LPCTSTR CListBodyUI::GetClassName()
+{
+	return _T("ListBodyUI");
+}
+LPCTSTR CListBodyUI::GetClass() const
+{
+	return CListBodyUI::GetClassName();
+}
 /////////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -1781,6 +1790,11 @@ bool CListElementUI::IsExpanded() const
 bool CListElementUI::Expand(bool /*bExpand = true*/)
 {
     return false;
+}
+
+void CListElementUI::DrawItemText(HDC hDC, const RECT& rcItem)
+{
+
 }
 
 void CListElementUI::DoEvent(TEventUI& event)

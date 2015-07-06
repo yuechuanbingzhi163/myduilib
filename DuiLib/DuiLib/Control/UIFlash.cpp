@@ -283,6 +283,10 @@ namespace DuiLib
 	{
 		m_szFlashUrl = szPath;
 	}
+	LPCTSTR CFlashUI::GetFlashUrl() const
+	{
+		return m_szFlashUrl;
+	}
 	void CFlashUI::DoInit()
 	{
 		__super::DoInit();

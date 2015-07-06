@@ -28,13 +28,13 @@ namespace DuiLib {
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/	
-	class UILIB_API CWin  
-		: public CWindowWnd
+	class UILIB_API CWin  : public CWindowWnd
 	{
 	public:
 		CWin();
 		virtual ~CWin();
-
+		LPCTSTR GetClass() const;
+		bool IsClass(LPCTSTR pstrClass);
 		virtual LPCTSTR GetWindowClassName() const;	
 		virtual UINT GetClassStyle() const;
 		virtual void OnFinalMessage( HWND hWnd );
@@ -180,11 +180,15 @@ namespace DuiLib {
 		HICON SetIcon(HICON hIcon,BOOL bBigIcon = TRUE);
 		HICON GetIcon(BOOL bBigIcon = TRUE) const;
 	public:
+		void SetValid(BOOL bValid);
+		BOOL IsValid() const;
 		bool RegisterSkin(STRINGorID xml, 
 			              LPCTSTR type = NULL,
 						  IDialogBuilderCallback* pCallback = NULL,
 						  CControlUI* pParent = NULL);
 		void UnRegisterSkin();
+
+		bool ExistsSkinFile(STRINGorID xml, LPCTSTR type = NULL);
 
 		UINT_PTR GetTag() const;
 		void SetTag(UINT_PTR pTag);
@@ -195,6 +199,7 @@ namespace DuiLib {
 		virtual LRESULT OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		virtual LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 #if defined(WIN32) && !defined(UNDER_CE)
+		//virtual LRESULT OnNcCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		virtual LRESULT OnNCMouseMove(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		virtual LRESULT OnNCMouseLeave(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 		virtual LRESULT OnNcActivate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
@@ -232,5 +237,6 @@ namespace DuiLib {
 	private:
 		CPaintManagerUI*  _paintManager;
 		UINT_PTR          _pTag;
+		BOOL              _bValid;
 	};	
 }

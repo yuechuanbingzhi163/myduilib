@@ -27,7 +27,8 @@ m_dwFocusBorderColor(0),
 m_bColorHSL(false),
 m_nBorderSize(0),
 m_nBorderStyle(PS_SOLID),
-m_nTooltipWidth(300)
+m_nTooltipWidth(300),
+m_pTagCtrl(NULL)
 {
     m_cXY.cx = m_cXY.cy = 0;
     m_cxyFixed.cx = m_cxyFixed.cy = 0;
@@ -234,7 +235,7 @@ void CControlUI::SetBorderSize(int nSize)
 // 参数信息: RECT rc
 // 函数说明: 
 //************************************
-void CControlUI::SetBorderSize( RECT rc )
+void CControlUI::SetBorderSize(RECT rc)
 {
 	m_rcBorderSize = rc;
 	Invalidate();
@@ -532,6 +533,14 @@ void CControlUI::SetTag(UINT_PTR pTag)
 {
     m_pTag = pTag;
 }
+CControlUI* CControlUI::GetTagCtrl() const
+{
+	return m_pTagCtrl;
+}
+void CControlUI::SetTagCtrl(CControlUI* pCtrl)
+{
+	m_pTagCtrl = pCtrl;
+}
 
 bool CControlUI::IsVisible() const
 {
@@ -730,10 +739,21 @@ void CControlUI::DoEvent(TEventUI& event)
         }
     }
 	//modify by dfn.li
+	if (event.Type == UIEVENT_RBUTTONUP)
+	{
+		m_pManager->SendNotify(this, DUI_MSGTYPE_RCLICK, event.wParam, event.lParam);
+//		return;
+	}
+
 	if( event.Type == UIEVENT_DBLCLICK )
 	{
 		m_pManager->SendNotify(this, DUI_MSGTYPE_DBCLICK, event.wParam, event.lParam);
-		//return;
+//		return;
+	}
+	if (event.Type == UIEVENT_RDBLCLICK)
+	{
+		m_pManager->SendNotify(this, DUI_MSGTYPE_RDBCLICK, event.wParam, event.lParam);
+//		return;
 	}
     if( m_pParent != NULL ) m_pParent->DoEvent(event);
 }

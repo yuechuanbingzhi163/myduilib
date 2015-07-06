@@ -34,6 +34,7 @@ namespace DuiLib
 		virtual bool DoCreateControl();
 		IShockwaveFlash* m_pFlash;
 		void SetFlashUrl(LPCTSTR szPath);
+		LPCTSTR GetFlashUrl() const;
 	private:
 		virtual LPCTSTR GetClass() const;
 		virtual LPVOID GetInterface( LPCTSTR pstrName );

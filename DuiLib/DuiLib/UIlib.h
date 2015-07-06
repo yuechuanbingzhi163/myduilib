@@ -43,6 +43,9 @@
 
 #define UILIB_COMDAT __declspec(selectany)
 
+#define _WINSOCKAPI_   /* Prevent inclusion of winsock.h in windows.h */
+
+#include "resource.h"
 
 #include <windows.h>
 #include <windowsx.h>
@@ -54,10 +57,12 @@
 #include <crtdbg.h>
 #include <malloc.h>
 
+#include "IDuiObject.h"
 #include "Utils/Utils.h"
 #include "Utils/UIDelegate.h"
 #include "Utils/UIReflection.h"
 #include "Core/UIDefine.h"
+#include "Core/UITrayIcon.h"
 #include "Core/UIManager.h"
 #include "Core/UIBase.h"
 #include "Core/UIControl.h"
@@ -65,67 +70,18 @@
 #include "Core/UIMarkup.h"
 #include "Core/UIDlgBuilder.h"
 #include "Core/UIRender.h"
+#include "Core/UITimer.h"
 #include "Utils/WindowImpl.h"
-
-#include "Layout/UIVerticalLayout.h"
-#include "Layout/UIHorizontalLayout.h"
-#include "Layout/UITileLayout.h"
-#include "Layout/UITabLayout.h"
-#include "Layout/UIChildLayout.h"
-//新增加
-#include "Control/UIAnimation.h"
-
-#include "Control/UIList.h"
-#include "Control/UICombo.h"
-#include "Control/UIScrollBar.h"
-#include "Control/UITreeView.h"
-
-#include "Control/UILabel.h"
-#include "Control/UIText.h"
-#include "Control/UIEdit.h"
-
-#include "Control/UIButton.h"
-#include "Control/UIOption.h"
-#include "Control/UICheckBox.h"
-#include "Control/UIRadio.h"
-
-#include "Control/UIProgress.h"
-#include "Control/UISlider.h"
-
-#include "Control/UIComboBox.h"
-#include "Control/UIRichEdit.h"
-#include "Control/UIDateTime.h"
-
-#include "Control/UIActiveX.h"
-#include "Control/UIWebBrowser.h"
-#include "Control/UIFlash.h"
-//-新增加
-#include "Control/UIGifAnim.h"
-#include "Control/UIFadeButton.h"
-#include "Control/UISeqButton.h"
-#include "Control/UIFadeOption.h"
-#include "Control/UIFadeCheckBox.h"
-#include "Control/UIAnimControl.h"
-#include "Control/UIHotKey.h"
-
-
-#include "Layout/UIAnimationTabLayout.h"
-
-#include "UICrack.h"
-#include "Utils/traits.h"
-#include "Utils/sys.h"
 #include "Utils/Window.h"
-#include "Control/UIAlbumButton.h"
 
-//#include "Utils/trayIcon.h"
+#include "CommonInclude.h"
+#include "ControlInclude.h"
+#include "ExtendInclude.h"
+//#include "LuaInclude.h"
+#include "NetInclude.h"
 
-#include "Core/Utility.h"
-//-Sound
-#include "Utils/SoundEngine.h"
-#include "Utils/SoundSystem.h"
+extern HINSTANCE g_dllModule ;
 
-//ThirdPart
-#include "ThirdPart/WkeWebkit/UIWkeWebkit.h"
 
 #ifdef _USE_DUILIB_
 #if defined(_DEBUG)

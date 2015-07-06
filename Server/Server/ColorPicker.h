@@ -12,7 +12,10 @@ class CColorPicker
 {
 public:
 	CColorPicker(CMainWindow* chat_dialog, POINT ptMouse);
-
+	virtual LPCTSTR GetClass() const
+	{
+		return _T("CColorPicker");
+	}
 	LPCTSTR GetWindowClassName() const;
 
 	CControlUI* CreateControl(LPCTSTR pstrClass);

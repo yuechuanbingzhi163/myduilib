@@ -10,19 +10,21 @@ namespace DuiLib {
 
 typedef CControlUI* (CALLBACK* FINDCONTROLPROC)(CControlUI*, LPVOID);
 
-class UILIB_API CControlUI
+class UILIB_API CControlUI : public IDuiObject
 {
 public:
     CControlUI();
     virtual ~CControlUI();
 
 public:
-	bool   IsClass(const LPCTSTR pstrClass);
 	bool   IsName(const LPCTSTR pstrName);
 	static LPCTSTR GetClassName();
     virtual CDuiString GetName() const;
     virtual void SetName(LPCTSTR pstrName);
+
     virtual LPCTSTR GetClass() const;
+	virtual bool   IsClass(LPCTSTR pstrClass);
+
     virtual LPVOID GetInterface(LPCTSTR pstrName);
     virtual UINT GetControlFlags() const;
 
@@ -64,6 +66,8 @@ public:
 	void SetBorderColor(DWORD dwBorderColor);
 
 	void SetBorderSize(RECT rc);
+	//void SetBorderRect(RECT rc);
+
 	int GetLeftBorderSize() const;
 	void SetLeftBorderSize(int nSize);
 	int GetTopBorderSize() const;
@@ -132,6 +136,8 @@ public:
     virtual void SetUserData(LPCTSTR pstrText); // 辅助函数，供用户使用
     virtual UINT_PTR GetTag() const; // 辅助函数，供用户使用
     virtual void SetTag(UINT_PTR pTag); // 辅助函数，供用户使用
+	virtual CControlUI* GetTagCtrl() const;
+	virtual void SetTagCtrl(CControlUI* pCtrl);
 
     // 一些重要的属性
     virtual bool IsVisible() const;
@@ -215,6 +221,7 @@ protected:
     TCHAR m_chShortcut;
     CDuiString m_sUserData;
     UINT_PTR m_pTag;
+	CControlUI* m_pTagCtrl;
 
     DWORD m_dwBackColor;
     DWORD m_dwBackColor2;

@@ -37,11 +37,44 @@
       <UniqueIdentifier>{bb8bbf65-2ac9-4b39-85bb-198701027155}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
-    <Filter Include="ThirdPart">
+    <Filter Include="Extend">
       <UniqueIdentifier>{2ffdb5fb-2b7d-43ba-bd92-3a0c6d256d32}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ThirdPart\WkeWebkit">
+    <Filter Include="Extend\WkeWebkit">
       <UniqueIdentifier>{7c693e0e-4db7-49cd-99da-99b4bb8003a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extend\Sound">
+      <UniqueIdentifier>{9a527145-464c-4193-ab91-2635a72767f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{62ed18d5-0182-4c2d-a8a4-0928cfdbba5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extend\Menu">
+      <UniqueIdentifier>{689a035a-a0c6-4df3-a996-d6131a66c276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extend\RzLib">
+      <UniqueIdentifier>{3da83835-2e13-4b74-b671-a039231c9d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extend\Logger">
+      <UniqueIdentifier>{b2c6ffa2-6d1d-41b1-8329-1b8c02157998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skin">
+      <UniqueIdentifier>{5b2eef98-7dc2-4f34-9019-5ae15c394ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skin\msgbox">
+      <UniqueIdentifier>{4f1b1b81-96ba-4f50-8296-d18109996798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skin\res">
+      <UniqueIdentifier>{984514ea-172e-460d-99dd-8430c0ffa4b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork">
+      <UniqueIdentifier>{9e149cc8-bc24-4d32-932e-80e7e18429b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\HTTP">
+      <UniqueIdentifier>{d0168c7d-6b19-4fff-b10b-73f29cfd51fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork\SOCK">
+      <UniqueIdentifier>{7e510bfb-7bf0-4262-a619-d2734d62ce3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +213,6 @@
     <ClCompile Include="Control\UISeqButton.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
-    <ClCompile Include="UICrack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils\sys.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="Control\UIAlbumButton.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
@@ -198,9 +225,6 @@
     <ClCompile Include="Control\UIRadio.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Utility.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Control\UIAniHelper.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
@@ -210,17 +234,47 @@
     <ClCompile Include="Utils\WindowImpl.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Utils\SoundEngine.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils\SoundSystem.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ThirdPart\WkeWebkit\UIWkeWebkit.cpp">
-      <Filter>ThirdPart\WkeWebkit</Filter>
-    </ClCompile>
     <ClCompile Include="Control\UIFlash.cpp">
       <Filter>Source Files\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Extend\WkeWebkit\UIWkeWebkit.cpp">
+      <Filter>Extend\WkeWebkit</Filter>
+    </ClCompile>
+    <ClCompile Include="Extend\Sound\SoundEngine.cpp">
+      <Filter>Extend\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Extend\Sound\SoundSystem.cpp">
+      <Filter>Extend\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\UICrack.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Utility.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\sys.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Extend\Menu\UIMenu.cpp">
+      <Filter>Extend\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\DuiString.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AssertX.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Exception.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Extend\Log\Logger.cpp">
+      <Filter>Extend\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\UITimer.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\UITrayIcon.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,15 +419,6 @@
     <ClInclude Include="Control\UISeqButton.h">
       <Filter>Header Files\Control</Filter>
     </ClInclude>
-    <ClInclude Include="UICrack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\sys.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\traits.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\Window.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
@@ -389,32 +434,131 @@
     <ClInclude Include="Control\UIRadio.h">
       <Filter>Header Files\Control</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Utility.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Control\UIAniHelper.h">
       <Filter>Header Files\Control</Filter>
     </ClInclude>
     <ClInclude Include="Utils\WindowImpl.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\SoundEngine.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\SoundSystem.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdPart\WkeWebkit\UIWkeWebkit.h">
-      <Filter>ThirdPart\WkeWebkit</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdPart\WkeWebkit\wke.h">
-      <Filter>ThirdPart\WkeWebkit</Filter>
-    </ClInclude>
     <ClInclude Include="Control\UIFlash.h">
       <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\WkeWebkit\UIWkeWebkit.h">
+      <Filter>Extend\WkeWebkit</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\WkeWebkit\wke.h">
+      <Filter>Extend\WkeWebkit</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\Sound\SoundEngine.h">
+      <Filter>Extend\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\Sound\SoundSystem.h">
+      <Filter>Extend\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtendInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\observer_impl_base.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\UICrack.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Utility.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\sys.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\Menu\UIMenu.h">
+      <Filter>Extend\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DuiString.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AssertX.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Exception.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="IDuiObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\Log\ILogger.h">
+      <Filter>Extend\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Extend\Log\Logger.h">
+      <Filter>Extend\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\UITimer.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\UITrayIcon.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DuiType.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DuiLib.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="MsgBox\MsgBox.xml">
+      <Filter>Skin\msgbox</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MsgBox\skin\info_bg.bmp">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\border.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\btn.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\btn_click.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\btn_disable.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\checkbox.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\warn.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\info.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\ok.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\skin\sys-close.png">
+      <Filter>Skin\res</Filter>
+    </Image>
+    <Image Include="MsgBox\YTing\bg_007.jpg">
+      <Filter>Skin\res</Filter>
+    </Image>
   </ItemGroup>
 </Project>

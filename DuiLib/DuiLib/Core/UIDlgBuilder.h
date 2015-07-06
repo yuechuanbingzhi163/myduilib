@@ -12,9 +12,13 @@ public:
 };
 
 
-class UILIB_API CDialogBuilder
+class UILIB_API CDialogBuilder : public IDuiObject
 {
 public:
+	virtual bool IsClass(LPCTSTR pstrClass);
+	virtual LPCTSTR GetClass() const;
+	static LPCTSTR GetClassName();
+
     CDialogBuilder();
     CControlUI* Create(STRINGorID xml, LPCTSTR type = NULL, IDialogBuilderCallback* pCallback = NULL,
         CPaintManagerUI* pManager = NULL, CControlUI* pParent = NULL);

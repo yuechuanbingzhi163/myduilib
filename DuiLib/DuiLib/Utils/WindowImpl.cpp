@@ -17,6 +17,7 @@ void WindowImpl::OnFinalMessage( HWND hWnd )
 	m_PaintManager.RemovePreMessageFilter(this);
 	m_PaintManager.RemoveNotifier(this);
 	m_PaintManager.ReapObjects(m_PaintManager.GetRoot());
+	m_PaintManager.GetTrayObject().DeleteTrayIcon();
 }
 
 LRESULT WindowImpl::ResponseDefaultKeyEvent(WPARAM wParam)

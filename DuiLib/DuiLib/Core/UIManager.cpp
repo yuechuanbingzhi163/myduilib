@@ -204,6 +204,7 @@ m_bUsedVirtualWnd(false),
 m_nOpacity(255),
 m_pParentResourcePM(NULL)
 {
+	m_hInstRes = m_hResourceInstance;
     m_dwDefaultDisabledColor = 0xFFA7A6AA;
     m_dwDefaultFontColor = 0xFF000000;
     m_dwDefaultLinkFontColor = 0xFF0000FF;
@@ -272,6 +273,20 @@ CPaintManagerUI::~CPaintManagerUI()
 
     if( m_hDcPaint != NULL ) ::ReleaseDC(m_hWndPaint, m_hDcPaint);
     m_aPreMessages.Remove(m_aPreMessages.Find(this));
+}
+
+bool CPaintManagerUI::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("PaintManagerUI")) == 0);
+}
+LPCTSTR CPaintManagerUI::GetClass() const
+{
+	return _T("PaintManagerUI");
+}
+
+LPCTSTR CPaintManagerUI::GetClassName()
+{
+	return _T("PaintManagerUI");
 }
 
 void CPaintManagerUI::Init(HWND hWnd)
@@ -433,6 +448,33 @@ bool CPaintManagerUI::LoadPlugin(LPCTSTR pstrModuleName)
 CStdPtrArray* CPaintManagerUI::GetPlugins()
 {
     return &m_aPlugins;
+}
+
+bool CPaintManagerUI::ExistsSkinFile(STRINGorID xml, LPCTSTR type /* = NULL */)
+{
+	CMarkup m_xml;
+	if (HIWORD(xml.m_lpstr) != NULL) {
+		if (*(xml.m_lpstr) == _T('<')) {
+			if (m_xml.Load(xml.m_lpstr)) return true;
+		}
+		else {
+			if (m_xml.LoadFromFile(xml.m_lpstr)) return true;
+		}
+	}
+	else {
+		HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), xml.m_lpstr, type);
+		if (hResource == NULL) return false;
+		HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
+		if (hGlobal == NULL) {
+			FreeResource(hResource);
+			return false;
+		}
+
+		if (!m_xml.LoadFromMem((BYTE*)::LockResource(hGlobal), ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource))) return false;
+		::FreeResource(hResource);
+		return true;
+	}
+	return false;
 }
 
 HWND CPaintManagerUI::GetPaintWindow() const
@@ -1329,6 +1371,44 @@ bool CPaintManagerUI::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LR
             m_pEventClick = pControl;
         }
         break;
+		/*
+	case WM_RBUTTONUP:
+		{
+			POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+			m_ptLastMousePos = pt;
+			if (m_pEventClick == NULL) break;
+			ReleaseCapture();
+			TEventUI event = { 0 };
+			event.Type = UIEVENT_RBUTTONUP;
+			event.pSender = m_pEventClick;
+			event.wParam = wParam;
+			event.lParam = lParam;
+			event.ptMouse = pt;
+			event.wKeyState = (WORD)wParam;
+			event.dwTimestamp = ::GetTickCount();
+			m_pEventClick->Event(event);
+			m_pEventClick = NULL;
+		}
+		break;
+	case WM_RBUTTONDBLCLK:
+		{
+			::SetFocus(m_hWndPaint);
+			POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+			m_ptLastMousePos = pt;
+			CControlUI* pControl = FindControl(pt);
+			if (pControl == NULL) break;
+			if (pControl->GetManager() != this) break;
+			SetCapture();
+			TEventUI event = { 0 };
+			event.Type = UIEVENT_RDBLCLICK;
+			event.pSender = pControl;
+			event.ptMouse = pt;
+			event.wKeyState = (WORD)wParam;
+			event.dwTimestamp = ::GetTickCount();
+			pControl->Event(event);
+			m_pEventClick = pControl;
+		}
+		break;*/
     case WM_CONTEXTMENU:
         {
             POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
@@ -2282,11 +2362,15 @@ const TImageInfo* CPaintManagerUI::AddImage(LPCTSTR bitmap, LPCTSTR type, DWORD 
         if( isdigit(*bitmap) ) {
             LPTSTR pstr = NULL;
             int iIndex = _tcstol(bitmap, &pstr, 10);
-            data = CRenderEngine::LoadImage(iIndex, type, mask);
+            data = CRenderEngine::LoadImage(iIndex, type, mask,this->GetCurResInstance());
         }
+		else
+		{
+			data = CRenderEngine::LoadImage(bitmap, type, mask, this->GetCurResInstance());
+		}
     }
     else {
-        data = CRenderEngine::LoadImage(bitmap, NULL, mask);
+		data = CRenderEngine::LoadImage(bitmap, NULL, mask, this->GetCurResInstance());
     }
 
     if( !data ) return NULL;
@@ -2476,7 +2560,7 @@ void CPaintManagerUI::RemoveAllStyle()
 }
 
 
-void CPaintManagerUI::PlaySound(LPCTSTR pStrName)
+void CPaintManagerUI::PlayDuiSound(LPCTSTR pStrName)
 {
 	ASSERT(pStrName);
 	if(!pStrName) return ;
@@ -2706,6 +2790,24 @@ bool CPaintManagerUI::RemoveTranslateAccelerator(ITranslateAccelerator *pTransla
 void CPaintManagerUI::UsedVirtualWnd(bool bUsed)
 {
 	m_bUsedVirtualWnd = bUsed;
+}
+
+CEventSource& CPaintManagerUI::GetEventSource()
+{
+	return m_aCustomEvents;
+}
+CTrayIconUI& CPaintManagerUI::GetTrayObject()
+{
+	return m_TrayIcon;
+}
+
+HINSTANCE CPaintManagerUI::GetCurResInstance()
+{
+	return m_hInstRes;
+}
+void CPaintManagerUI::SetCurResInstance(HINSTANCE hInst)
+{
+	m_hInstRes = hInst;
 }
 
 } // namespace DuiLib

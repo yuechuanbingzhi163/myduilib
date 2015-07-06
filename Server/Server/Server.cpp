@@ -34,6 +34,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	CPaintManagerUI::SetInstance(hInstance);
+	CDuiString s = CPaintManagerUI::GetInstancePath();
 	CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath()+_T("skin"));
 	CPaintManagerUI::SetResourceZip(_T("Srv.dat"));
 

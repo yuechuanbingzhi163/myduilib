@@ -59,6 +59,7 @@ public:
     virtual void SetMultiSelect(bool b) = 0;
 	virtual bool IsMultiSelected() const = 0;
     virtual void DoEvent(TEventUI& event) = 0;
+	virtual LPCTSTR GetClass() const = 0;
 };
 
 class IListUI : public IListOwnerUI
@@ -220,7 +221,10 @@ public:
     void SetScrollPos(SIZE szPos);
     void SetPos(RECT rc);
     void DoEvent(TEventUI& event);
-
+	
+	// add by rz.li
+	static LPCTSTR GetClassName();
+	LPCTSTR GetClass() const;
 protected:
     CListUI* m_pOwner;
 };
@@ -327,17 +331,7 @@ public:
 
     void SetEnabled(bool bEnable = true);
 
-    int GetIndex() const;
-    void SetIndex(int iIndex);
-
-    IListOwnerUI* GetOwner();
-    void SetOwner(CControlUI* pOwner);
     void SetVisible(bool bVisible = true);
-
-    bool IsSelected() const;
-    bool Select(bool bSelect = true);
-    bool IsExpanded() const;
-    bool Expand(bool bExpand = true);
 
     void Invalidate(); // 直接CControl::Invalidate会导致滚动条刷新，重写减少刷新区域
     bool Activate();
@@ -346,6 +340,16 @@ public:
     void SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);
 
     void DrawItemBk(HDC hDC, const RECT& rcItem);
+
+	int GetIndex() const;
+	void SetIndex(int iIndex);
+	IListOwnerUI* GetOwner();
+	void SetOwner(CControlUI* pOwner);
+	bool IsSelected() const;
+	bool Select(bool bSelect = true);
+	bool IsExpanded() const;
+	bool Expand(bool bExpand = true);
+	virtual void DrawItemText(HDC hDC, const RECT& rcItem);
 
 protected:
     int m_iIndex;

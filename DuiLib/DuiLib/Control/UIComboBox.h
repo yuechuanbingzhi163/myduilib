@@ -19,6 +19,9 @@ namespace DuiLib
 
 		LPCTSTR GetClass() const;
 
+		LPCTSTR GetArrowImage() const;
+		void SetArrowImage(LPCTSTR pStrImage);
+
 		void SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);
 
 		void PaintText(HDC hDC);

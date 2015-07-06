@@ -6,15 +6,19 @@
 namespace DuiLib {
 /////////////////////////////////////////////////////////////////////////////////////
 //
+#define WM_EFFECTS		WM_USER+1680
+#define WM_RELOADSTYLE	WM_USER+1681
+#define WM_MOUSEINTRAYICON	WM_USER+1682
+#define WM_MOUSEOUTTRAYICON	WM_USER+1683
 
 class CControlUI;
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
 
 typedef enum EVENTTYPE_UI
 {
+	UIEVENT__ALL = 0,
     UIEVENT__FIRST = 1,
     UIEVENT__KEYBEGIN,
     UIEVENT_KEYDOWN,
@@ -30,7 +34,9 @@ typedef enum EVENTTYPE_UI
     UIEVENT_BUTTONDOWN,
     UIEVENT_BUTTONUP,
     UIEVENT_RBUTTONDOWN,
+	UIEVENT_RBUTTONUP,
     UIEVENT_DBLCLICK,
+	UIEVENT_RDBLCLICK,
     UIEVENT_CONTEXTMENU,
     UIEVENT_SCROLLWHEEL,
     UIEVENT__MOUSEEND,
@@ -41,7 +47,20 @@ typedef enum EVENTTYPE_UI
     UIEVENT_TIMER,
     UIEVENT_NOTIFY,
     UIEVENT_COMMAND,
+	UIEVENT_RELOADSTYLE,
+    UIEVENT__CUSTOMBEGIN,
+	UIEVENT_TRAYICON,
+	UIEVENT_MOUSEINTRAYICON,
+	UIEVENT_MOUSEOUTTRAYICON,
+    UIEVENT__CUSTOMEND,
     UIEVENT__LAST,
+};
+
+typedef enum EVENT_USER
+{
+    EVENT__ALL = WM_USER,
+    EVENT_SOCKET,
+    EVENT__LAST,
 };
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -154,13 +173,17 @@ public:
 typedef CControlUI* (*LPCREATECONTROL)(LPCTSTR pstrType);
 
 class UILIB_API CTooptip;
-class UILIB_API CPaintManagerUI
+class UILIB_API CPaintManagerUI : public IDuiObject
 {
 public:
     CPaintManagerUI();
     ~CPaintManagerUI();
 
 public:
+	virtual bool IsClass(LPCTSTR pstrClass);
+	virtual LPCTSTR GetClass() const;
+	static LPCTSTR GetClassName();
+
     void Init(HWND hWnd);
     void NeedUpdate();
     void Invalidate(RECT& rcItem);
@@ -212,6 +235,7 @@ public:
     static void ReloadSkin();
     static bool LoadPlugin(LPCTSTR pstrModuleName);
     static CStdPtrArray* GetPlugins();
+	static bool ExistsSkinFile(STRINGorID xml, LPCTSTR type = NULL);
 
     bool UseParentResource(CPaintManagerUI* pm);
     CPaintManagerUI* GetParentResource() const;
@@ -273,7 +297,7 @@ public:
 
 
 
-	static void PlaySound(LPCTSTR pStrName);
+	static void PlayDuiSound(LPCTSTR pStrName);
 
 	//end
 
@@ -339,6 +363,11 @@ public:
     bool MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& lRes);
     bool PreMessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& lRes);
 	void UsedVirtualWnd(bool bUsed);
+
+	CEventSource& GetEventSource();
+	CTrayIconUI& GetTrayObject();
+	HINSTANCE GetCurResInstance();
+	void SetCurResInstance(HINSTANCE hInst);
 
 private:
     static CControlUI* CALLBACK __FindControlFromNameHash(CControlUI* pThis, LPVOID pData);
@@ -437,6 +466,12 @@ private:
     static short m_L;
     static CStdPtrArray m_aPreMessages;
     static CStdPtrArray m_aPlugins;
+	//
+	HINSTANCE m_hInstRes;
+	//
+	CEventSource m_aCustomEvents;
+	//
+	CTrayIconUI  m_TrayIcon;
 
 public:
 	static CDuiString m_pStrDefaultFontName;

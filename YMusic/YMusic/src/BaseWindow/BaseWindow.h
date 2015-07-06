@@ -4,7 +4,6 @@
 #pragma once
 #include "DuiLib/UIlib.h"
 
-#include "DuiLib/UIMenu.h"
 #ifdef _DEBUG
 #   ifdef _UNICODE
 #       pragma comment(lib, "DuiLib_ud.lib")
@@ -21,7 +20,7 @@
 
 using namespace DuiLib;
 
-#include "DuiLib/skin_change_event.hpp"
+#include "../../skin_change_event.hpp"
 
 enum USER_MSG
 {

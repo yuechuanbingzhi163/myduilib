@@ -31,7 +31,7 @@ LPCTSTR CDesktopLrcWindow::GetWindowClassName() const
 }
 LRESULT CDesktopLrcWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	YTrace_(DUI__TraceMsg(uMsg));
+//	YTrace_(DUI__TraceMsg(uMsg));
 	return __super::HandleMessage(uMsg,wParam,lParam);
 }
 LRESULT CDesktopLrcWindow::ProcessWindowMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)

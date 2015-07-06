@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\..\bin\</OutDir>
+    <OutDir>$(SolutionDir)/../bin</OutDir>
     <TargetName>YMusic</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -60,7 +60,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../Lib;../../libcurl\lib\Debug\;./src\DataBase\;./src\Agent\ext\</AdditionalLibraryDirectories>
-      <OutputFile>$(SolutionDir)\..\bin\YMusic.exe</OutputFile>
+      <OutputFile>../../bin/$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,11 +87,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h" />
-    <ClInclude Include="..\..\DuiLib\DuiLib\Utils\trayIcon.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="src\BaseWindow\BaseWindow.h" />
     <ClInclude Include="src\BaseWindow\InfoWindow.h" />
+    <ClInclude Include="src\BaseWindow\trayIcon.h" />
     <ClInclude Include="src\CacheMgr\CacheMgr.h" />
     <ClInclude Include="src\DataBase\Database.h" />
     <ClInclude Include="src\DataBase\DatabaseManager.h" />
@@ -194,10 +193,9 @@
     <Image Include="YMusic.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp" />
-    <ClCompile Include="..\..\DuiLib\DuiLib\Utils\trayIcon.cpp" />
     <ClCompile Include="src\BaseWindow\BaseWindow.cpp" />
     <ClCompile Include="src\BaseWindow\InfoWindow.cpp" />
+    <ClCompile Include="src\BaseWindow\trayIcon.cpp" />
     <ClCompile Include="src\CacheMgr\CacheMgr.cpp" />
     <ClCompile Include="src\DataBase\Database.cpp" />
     <ClCompile Include="src\DataBase\DatabaseManager.cpp" />

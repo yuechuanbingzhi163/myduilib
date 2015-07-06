@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="LuaInterface">
+      <UniqueIdentifier>{8e68c4a3-9990-4728-942f-d4ed213367fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaInterface\LuaControl">
+      <UniqueIdentifier>{46e411bb-abea-4288-9ade-1f846c4ac03d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaInterface\LuaCore">
+      <UniqueIdentifier>{f4d54af6-ccb2-450a-8c90-3b87b9d8796d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaInterface\LuaUtils">
+      <UniqueIdentifier>{0598f2d6-c3a5-4861-9a30-1ee7e41a83cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaDuiLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaBinding.h">
+      <Filter>LuaInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCWindow.h">
+      <Filter>LuaInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaEntry.h">
+      <Filter>LuaInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaOp.h">
+      <Filter>LuaInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaRegister.h">
+      <Filter>LuaInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCActiveXUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAlbumButtonUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAnimationTabLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAnimControlUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCButtonUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCCheckBoxUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCChildLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCComboBoxUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCComboUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCContainerUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCControlUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCDateTimeUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCEditUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeButtonUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeCheckBoxUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeOptionUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFlashUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCGifAnimUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCHorizontalLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCHotKeyUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCLabelUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCListUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaControlInclude.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCOptionUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCProgressUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCRadioUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCScrollBarUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCSeqButtonUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCSliderUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTabLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTextUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTileLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTreeViewUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCVerticalLayoutUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCWebBrowserUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaControl\LuaCWkeWebkitUI.h">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCDialogBuilder.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCMarkup.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCoreInclude.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCPaintManagerUI.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCRender.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaCWindowWnd.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaCore\LuaStruct.h">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaUtils\LuaBit.h">
+      <Filter>LuaInterface\LuaUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaUtils\LuaUtilsInclude.h">
+      <Filter>LuaInterface\LuaUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaInterface\LuaUtils\LuaWindowExport.h">
+      <Filter>LuaInterface\LuaUtils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaDuiLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCWindow.cpp">
+      <Filter>LuaInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaEntry.cpp">
+      <Filter>LuaInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaRegister.cpp">
+      <Filter>LuaInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCActiveXUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAlbumButtonUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAnimationTabLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAnimControlUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCButtonUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCCheckBoxUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCChildLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCComboBoxUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCComboUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCContainerUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCControlUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCDateTimeUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCEditUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeButtonUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeCheckBoxUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeOptionUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFlashUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCGifAnimUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCHorizontalLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCHotKeyUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCLabelUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCListUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCOptionUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCProgressUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCRadioUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCScrollBarUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCSeqButtonUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCSliderUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTabLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTextUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTileLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTreeViewUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCVerticalLayoutUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCWebBrowserUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaControl\LuaCWkeWebkitUI.cpp">
+      <Filter>LuaInterface\LuaControl</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaCDialogBuilder.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaCMarkup.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaCPaintManagerUI.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaCRender.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaCWindowWnd.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaCore\LuaStruct.cpp">
+      <Filter>LuaInterface\LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaUtils\LuaBit.cpp">
+      <Filter>LuaInterface\LuaUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaInterface\LuaUtils\LuaWindowExport.cpp">
+      <Filter>LuaInterface\LuaUtils</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

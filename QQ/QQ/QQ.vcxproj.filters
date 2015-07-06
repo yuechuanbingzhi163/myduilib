@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{883e8ff0-6cb1-41ad-8c66-b4faef5db6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mainwindow">
+      <UniqueIdentifier>{c752dd5f-b5d8-40cb-8719-758625c8e1bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\userinfo">
+      <UniqueIdentifier>{41b2fc44-e61d-4c02-a199-27bb705c2bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tree">
+      <UniqueIdentifier>{13fb2e1d-c7c2-4d7c-be25-4b4cad9c5f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\login">
+      <UniqueIdentifier>{cb8e9b21-535e-4a34-a819-74325b959997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\list">
+      <UniqueIdentifier>{b7b6b941-bbd8-4930-9e90-67dc619bbf39}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QQ.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mainwindow\mainwindow.h">
+      <Filter>src\mainwindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\userinfo\user.h">
+      <Filter>src\userinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tree\UIListCommonDefine.h">
+      <Filter>src\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tree\UIUserList.h">
+      <Filter>src\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\login\login.h">
+      <Filter>src\login</Filter>
+    </ClInclude>
+    <ClInclude Include="src\login\login_list.h">
+      <Filter>src\login</Filter>
+    </ClInclude>
+    <ClInclude Include="src\list\UILoginList.h">
+      <Filter>src\list</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mainwindow\mainwindow.cpp">
+      <Filter>src\mainwindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\userinfo\user.cpp">
+      <Filter>src\userinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tree\UIListCommonDefine.cpp">
+      <Filter>src\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tree\UIUserList.cpp">
+      <Filter>src\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\login\login.cpp">
+      <Filter>src\login</Filter>
+    </ClCompile>
+    <ClCompile Include="src\login\login_list.cpp">
+      <Filter>src\login</Filter>
+    </ClCompile>
+    <ClCompile Include="src\list\UILoginList.cpp">
+      <Filter>src\list</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QQ.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="QQ.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

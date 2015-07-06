@@ -2,6 +2,20 @@
 
 namespace DuiLib {
 
+LPCTSTR CDialogBuilder::GetClass() const
+{
+	return _T("DialogBuilder");
+}
+
+LPCTSTR CDialogBuilder::GetClassName() 
+{
+	return _T("DialogBuilder");
+}
+bool CDialogBuilder::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("DialogBuilder")) == 0);
+}
+
 CDialogBuilder::CDialogBuilder() : m_pCallback(NULL), m_pstrtype(NULL)
 {
 
@@ -13,27 +27,79 @@ CControlUI* CDialogBuilder::Create(STRINGorID xml, LPCTSTR type, IDialogBuilderC
 	//资源ID为0-65535，两个字节；字符串指针为4个字节
 	//字符串以<开头认为是XML字符串，否则认为是XML文件
 
-    if( HIWORD(xml.m_lpstr) != NULL ) {
-        if( *(xml.m_lpstr) == _T('<') ) {
-            if( !m_xml.Load(xml.m_lpstr) ) return NULL;
-        }
-        else {
-            if( !m_xml.LoadFromFile(xml.m_lpstr) ) return NULL;
-        }
-    }
-    else {
-        HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), xml.m_lpstr, type);
-        if( hResource == NULL ) return NULL;
-        HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
-        if( hGlobal == NULL ) {
-            FreeResource(hResource);
-            return NULL;
-        }
+	if (xml.m_hInst == NULL)
+	{
+		if (HIWORD(xml.m_lpstr) != NULL) //从文件加载
+		{ 
+			if (*(xml.m_lpstr) == _T('<')) {
+				if (!m_xml.Load(xml.m_lpstr)) return NULL;
+			}
+			else {
+				if (!m_xml.LoadFromFile(xml.m_lpstr)) return NULL;
+			}
+		}
+		else
+		{
+			HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), xml.m_lpstr, type);
+			if (hResource == NULL) return NULL;
+			HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
+			if (hGlobal == NULL) {
+				FreeResource(hResource);
+				return NULL;
+			}
 
-        m_pCallback = pCallback;
-        if( !m_xml.LoadFromMem((BYTE*)::LockResource(hGlobal), ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource) )) return NULL;
-        ::FreeResource(hResource);
-        m_pstrtype = type;
+			m_pCallback = pCallback;
+			if (!m_xml.LoadFromMem((BYTE*)::LockResource(hGlobal), ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource))) return NULL;
+			::FreeResource(hResource);
+			m_pstrtype = type;
+		}
+		if (pManager)
+			pManager->SetCurResInstance(CPaintManagerUI::GetResourceDll());
+	}
+    else 
+	{
+		if (xml.m_hInst != NULL && xml.m_ID != 0)
+		{
+			HRSRC hResource = ::FindResource(xml.m_hInst, MAKEINTRESOURCE(xml.m_ID), type);
+			if (hResource == NULL)
+			{
+				return NULL;
+			}
+			HGLOBAL hGlobal = ::LoadResource(xml.m_hInst, hResource);
+			if (hGlobal == NULL) {
+				FreeResource(hResource);
+				return NULL;
+			}
+
+			m_pCallback = pCallback;
+			if (!m_xml.LoadFromMem((BYTE*)::LockResource(hGlobal), ::SizeofResource(xml.m_hInst, hResource)))
+			{
+				return NULL;
+			}
+			::FreeResource(hResource);
+			m_pstrtype = type;
+
+			if (pManager)
+				pManager->SetCurResInstance(xml.m_hInst);
+		}
+		else
+		{
+			HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), xml.m_lpstr, type);
+			if (hResource == NULL) return NULL;
+			HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
+			if (hGlobal == NULL) {
+				FreeResource(hResource);
+				return NULL;
+			}
+
+			m_pCallback = pCallback;
+			if (!m_xml.LoadFromMem((BYTE*)::LockResource(hGlobal), ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource))) return NULL;
+			::FreeResource(hResource);
+			m_pstrtype = type;
+
+			if (pManager)
+				pManager->SetCurResInstance(CPaintManagerUI::GetResourceDll());
+		}	
     }
 
     return Create(pCallback, pManager, pParent);
@@ -254,6 +320,13 @@ CControlUI* CDialogBuilder::Create(IDialogBuilderCallback* pCallback, CPaintMana
                         DWORD clrColor = _tcstoul(pstrValue, &pstr, 16);
                         pManager->SetDefaultSelectedBkColor(clrColor);
                     } 
+					else if (_tcscmp(pstrName, _T("trayiconid")) == 0) {
+						if (_ttoi(pstrValue) > 0)
+							pManager->GetTrayObject().CreateTrayIcon(pManager->GetPaintWindow(), _ttoi(pstrValue),NULL,0,pManager);
+					}
+					else if (_tcscmp(pstrName, _T("traytiptext")) == 0) {
+						pManager->GetTrayObject().SetTooltipText(pstrValue);
+					}
                 }
             }
         }

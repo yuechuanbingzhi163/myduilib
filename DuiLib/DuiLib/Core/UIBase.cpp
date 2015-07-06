@@ -80,7 +80,9 @@ LPCTSTR DUI__TraceMsg(UINT uMsg)
     MSGDEF(WM_DESTROY);
     MSGDEF(WM_GETICON);   
     MSGDEF(WM_GETTEXT);
-    MSGDEF(WM_GETTEXTLENGTH);   
+    MSGDEF(WM_GETTEXTLENGTH);  
+	MSGDEF(WM_MENUCOMMAND);
+	MSGDEF(WM_HOTKEY);
     static TCHAR szMsg[10];
     ::wsprintf(szMsg, _T("0x%04X"), uMsg);
     return szMsg;
@@ -218,7 +220,14 @@ HWND CWindowWnd::GetHWND() const
 { 
     return m_hWnd; 
 }
-
+bool CWindowWnd::IsClass(LPCTSTR pstrClass)
+{
+	return (_tcscmp(pstrClass, _T("WindowWnd")) == 0);
+}
+LPCTSTR CWindowWnd::GetClass() const
+{
+	return _T("WindowWnd");
+}
 UINT CWindowWnd::GetClassStyle() const
 {
     return 0;

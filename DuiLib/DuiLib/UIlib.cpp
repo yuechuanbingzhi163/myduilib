@@ -50,17 +50,34 @@
 #include "stdafx.h"
 #include "UIlib.h"
 
+HINSTANCE g_dllModule = NULL;
 
-BOOL APIENTRY DllMain(HANDLE hModule, DWORD  dwReason, LPVOID /*lpReserved*/)
+BOOL APIENTRY DllMain(HANDLE hModule, DWORD  dwReason, LPVOID lpReserved)
 {
-    switch( dwReason ) {
-   case DLL_PROCESS_ATTACH:
-   case DLL_THREAD_ATTACH:
-   case DLL_THREAD_DETACH:
-   case DLL_PROCESS_DETACH:
-       ::DisableThreadLibraryCalls((HMODULE)hModule);
-       break;
-    }
+  	printf("hModule.%p lpReserved.%p \n", hModule, lpReserved);
+
+	switch (dwReason)
+	{
+	case DLL_PROCESS_ATTACH:
+		printf("Process attach. \n");
+		g_dllModule = (HINSTANCE)hModule;
+		break;
+
+	case DLL_PROCESS_DETACH:
+		printf("Process detach. \n");
+		break;
+
+	case DLL_THREAD_ATTACH:
+		printf("Thread attach. \n");
+		break;
+
+	case DLL_THREAD_DETACH:
+		::DisableThreadLibraryCalls((HMODULE)hModule);
+		//g_dllModule = NULL;
+		printf("Thread detach. \n");
+		break;
+	}
+
     return TRUE;
 }
 

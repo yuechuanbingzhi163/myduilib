@@ -345,6 +345,11 @@ namespace DuiLib
 	{
 		return !mTreeNodes.IsEmpty();
 	}
+	////////NOTE:
+	long CTreeNodeUI::GetTreeLevel() const
+	{
+		return 0;
+	}
 	
 	//************************************
 	// º¯ÊýÃû³Æ: AddChildNode

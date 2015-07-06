@@ -283,7 +283,7 @@ DWORD CRenderEngine::AdjustColor(DWORD dwColor, short H, short S, short L)
     return dwColor;
 }
 
-TImageInfo* CRenderEngine::LoadImage(STRINGorID bitmap, LPCTSTR type, DWORD mask)
+TImageInfo* CRenderEngine::LoadImage(STRINGorID bitmap, LPCTSTR type, DWORD mask, HINSTANCE hInstRes)
 {
     LPBYTE pData = NULL;
     DWORD dwSize = 0;
@@ -334,15 +334,23 @@ TImageInfo* CRenderEngine::LoadImage(STRINGorID bitmap, LPCTSTR type, DWORD mask
 			}
 		}
 		else {
-			HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), bitmap.m_lpstr, type);
+			if (!hInstRes)
+				hInstRes = CPaintManagerUI::GetResourceDll();
+			HRSRC hResource = NULL;
+			if (bitmap.m_ID>0)
+			{
+				hResource = ::FindResource(hInstRes, MAKEINTRESOURCE(bitmap.m_ID), type);
+			}
+			else
+				hResource = ::FindResource(hInstRes, bitmap.m_lpstr, type);
 			if( hResource == NULL ) break;
-			HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
+			HGLOBAL hGlobal = ::LoadResource(hInstRes, hResource);
 			if( hGlobal == NULL ) {
 				FreeResource(hResource);
 				break;
 			}
 
-			dwSize = ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource);
+			dwSize = ::SizeofResource(hInstRes, hResource);
 			if( dwSize == 0 ) break;
 			pData = new BYTE[ dwSize ];
 			::CopyMemory(pData, (LPBYTE)::LockResource(hGlobal), dwSize);
@@ -440,7 +448,7 @@ TImageInfo* CRenderEngine::LoadImage(STRINGorID bitmap, LPCTSTR type, DWORD mask
 }
 
 ////////////////////////////////////////////
-HBITMAP CRenderEngine::LoadBitmap(STRINGorID bitmap, LPCTSTR type /* = NULL */, DWORD mask /* = 0 */)
+HBITMAP CRenderEngine::LoadBitmap(STRINGorID bitmap, LPCTSTR type /* = NULL */, DWORD mask /* = 0 */, HINSTANCE hInstRes /*= NULL*/)
 {
 	LPBYTE pData = NULL;
 	DWORD dwSize = 0;
@@ -491,15 +499,17 @@ HBITMAP CRenderEngine::LoadBitmap(STRINGorID bitmap, LPCTSTR type /* = NULL */, 
 			}
 		}
 		else {
-			HRSRC hResource = ::FindResource(CPaintManagerUI::GetResourceDll(), bitmap.m_lpstr, type);
+			if (!hInstRes)
+				hInstRes = CPaintManagerUI::GetResourceDll();
+			HRSRC hResource = ::FindResource(hInstRes, bitmap.m_lpstr, type);
 			if( hResource == NULL ) break;
-			HGLOBAL hGlobal = ::LoadResource(CPaintManagerUI::GetResourceDll(), hResource);
+			HGLOBAL hGlobal = ::LoadResource(hInstRes, hResource);
 			if( hGlobal == NULL ) {
 				FreeResource(hResource);
 				break;
 			}
 
-			dwSize = ::SizeofResource(CPaintManagerUI::GetResourceDll(), hResource);
+			dwSize = ::SizeofResource(hInstRes, hResource);
 			if( dwSize == 0 ) break;
 			pData = new BYTE[ dwSize ];
 			::CopyMemory(pData, (LPBYTE)::LockResource(hGlobal), dwSize);

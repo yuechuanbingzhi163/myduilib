@@ -99,12 +99,6 @@
     <ClInclude Include="log.h">
       <Filter>log</Filter>
     </ClInclude>
-    <ClInclude Include="ColorPicker.h">
-      <Filter>colorpicker</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h">
-      <Filter>menu</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,12 +139,6 @@
     </ClCompile>
     <ClCompile Include="log.cpp">
       <Filter>log</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorPicker.cpp">
-      <Filter>colorpicker</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp">
-      <Filter>menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

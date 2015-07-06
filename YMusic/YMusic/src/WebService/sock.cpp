@@ -32,7 +32,8 @@ CSockAddr::CSockAddr(unsigned short uport,const char* ip /* = NULL */)
 			{
 				nIp = inet_addr(inet_ntoa(*((LPIN_ADDR)*lphostent->h_addr_list)));
 			}	
-		}else
+		}
+		else
 		{
 			nIp = inet_addr(ip);
 		}

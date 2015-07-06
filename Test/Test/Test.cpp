@@ -224,12 +224,12 @@ public:
         }
         else if(msg.sType == _T("menu")) 
         {
-            if( msg.pSender->GetName() != _T("domainlist") ) return;
-            CMenuWnd* pMenu = new CMenuWnd();
-            if( pMenu == NULL ) { return; }
-            POINT pt = {msg.ptMouse.x, msg.ptMouse.y};
-            ::ClientToScreen(*this, &pt);
-            pMenu->Init(msg.pSender, pt);
+//             if( msg.pSender->GetName() != _T("domainlist") ) return;
+//             CMenuWnd* pMenu = new CMenuWnd();
+//             if( pMenu == NULL ) { return; }
+//             POINT pt = {msg.ptMouse.x, msg.ptMouse.y};
+//             ::ClientToScreen(*this, &pt);
+//             pMenu->Init(msg.pSender, pt);
         }
         else if( msg.sType == _T("menu_Delete") ) {
             CListUI* pList = static_cast<CListUI*>(msg.pSender);
@@ -433,19 +433,50 @@ private:
     //...
 };
 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpCmdLine*/, int nCmdShow)
+int RunLua(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    CPaintManagerUI::SetInstance(hInstance);
-    CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath() + _T("skin"));
-    CPaintManagerUI::SetResourceZip(_T("ListRes.zip"));
+	Lua::CoInitialize();
+	Lua::AddPackagePath("./");
+	Lua::LoadFile("main.lua");
 
-    ListMainForm* pFrame = new ListMainForm();
-    if( pFrame == NULL ) return 0;
-    pFrame->Create(NULL, _T("ListDemo"), UI_WNDSTYLE_FRAME, WS_EX_STATICEDGE | WS_EX_APPWINDOW , 0, 0, 600, 320);
-    pFrame->CenterWindow();
-    ::ShowWindow(*pFrame, SW_SHOW);
+	Lua::GetGlobal("main");
+	LuaStackOpt::PushObject(hInstance, "HINSTANCE");
+	LuaStackOpt::PushObject(hPrevInstance, "HINSTANCE");
+	//char* pCmdLine = (char*)lpCmdLine;
+	CDuiString pCmdLine(lpCmdLine);
+	LuaStackOpt::PushStack(pCmdLine);
+	dui_int32 nCmd = nCmdShow;
+	LuaStackOpt::PushStack(nCmd);
+	Lua::PCall(4, 0);
 
-    CPaintManagerUI::MessageLoop();
+	Lua::GetGlobal("exit");
+	Lua::PCall(0, 0);
+	Lua::CoUninitialize();
+
+	return 0;
+}
+
+int RunCpp(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+	CPaintManagerUI::SetInstance(hInstance);
+	CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath() + _T("skin"));
+	CPaintManagerUI::SetResourceZip(_T("ListRes.zip"));
+
+	ListMainForm* pFrame = new ListMainForm();
+	if (pFrame == NULL) return 0;
+	pFrame->Create(NULL, _T("ListDemo"), UI_WNDSTYLE_FRAME, WS_EX_STATICEDGE | WS_EX_APPWINDOW, 0, 0, 600, 320);
+	pFrame->CenterWindow();
+	::ShowWindow(*pFrame, SW_SHOW);
+
+	CPaintManagerUI::MessageLoop();
+}
+
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+
+	//RunCpp(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+
+	RunLua(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
 
 	return 0;
 }

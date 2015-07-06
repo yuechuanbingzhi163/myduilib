@@ -46,8 +46,21 @@ LPCTSTR UILIB_API DUI__TraceMsg(UINT uMsg);
 /////////////////////////////////////////////////////////////////////////////////////
 //
 
-class UILIB_API CNotifyPump
+class UILIB_API CNotifyPump : public IDuiObject
 {
+public:
+	virtual bool IsClass(LPCTSTR pstrClass)
+	{
+		return (_tcscmp(pstrClass, CNotifyPump::GetClassName()) == 0);
+	}
+	virtual LPCTSTR GetClass() const
+	{
+		return CNotifyPump::GetClassName();
+	}
+	static LPCTSTR GetClassName()
+	{
+		return _T("NotifyPump");
+	}
 public:
 	bool AddVirtualWnd(CDuiString strName,CNotifyPump* pObject);
 	bool RemoveVirtualWnd(CDuiString strName);
@@ -58,8 +71,11 @@ private:
 	CStdStringPtrMap m_VirtualWndMap;
 };
 
-class UILIB_API CWindowWnd
+class UILIB_API CWindowWnd : public IDuiObject
 {
+public:
+	virtual bool IsClass(LPCTSTR pstrClass);
+	virtual LPCTSTR GetClass() const;
 public:
     CWindowWnd();
 

@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB6F104A-FC46-42B8-909C-1DAF2BDFA674}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LuaDuiLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>.\Build\Debug\</OutDir>
+    <IntDir>.\Build\Debug\</IntDir>
+    <IncludePath>$(LUA_DEV)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LUADUILIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../DuiLib</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>../../bin/LuaDuiLib_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;$(LUA_DEV)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>../../lib/LuaDuiLib_d.lib</ImportLibrary>
+      <AdditionalDependencies>lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LUADUILIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LuaDuiLib.h" />
+    <ClInclude Include="LuaInterface\LuaBinding.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCActiveXUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAlbumButtonUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAnimationTabLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCAnimControlUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCButtonUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCCheckBoxUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCChildLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCComboBoxUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCComboUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCContainerUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCControlUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCDateTimeUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCEditUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeButtonUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeCheckBoxUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFadeOptionUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCFlashUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCGifAnimUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCHorizontalLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCHotKeyUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCLabelUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCListUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaControlInclude.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCOptionUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCProgressUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCRadioUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCScrollBarUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCSeqButtonUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCSliderUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTabLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTextUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTileLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCTreeViewUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCVerticalLayoutUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCWebBrowserUI.h" />
+    <ClInclude Include="LuaInterface\LuaControl\LuaCWkeWebkitUI.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCDialogBuilder.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCMarkup.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCoreInclude.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCPaintManagerUI.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCRender.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaCWindowWnd.h" />
+    <ClInclude Include="LuaInterface\LuaCore\LuaStruct.h" />
+    <ClInclude Include="LuaInterface\LuaCWindow.h" />
+    <ClInclude Include="LuaInterface\LuaEntry.h" />
+    <ClInclude Include="LuaInterface\LuaOp.h" />
+    <ClInclude Include="LuaInterface\LuaRegister.h" />
+    <ClInclude Include="LuaInterface\LuaUtils\LuaBit.h" />
+    <ClInclude Include="LuaInterface\LuaUtils\LuaUtilsInclude.h" />
+    <ClInclude Include="LuaInterface\LuaUtils\LuaWindowExport.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="LuaDuiLib.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCActiveXUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAlbumButtonUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAnimationTabLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCAnimControlUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCButtonUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCCheckBoxUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCChildLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCComboBoxUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCComboUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCContainerUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCControlUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCDateTimeUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCEditUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeButtonUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeCheckBoxUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFadeOptionUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCFlashUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCGifAnimUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCHorizontalLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCHotKeyUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCLabelUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCListUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCOptionUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCProgressUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCRadioUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCScrollBarUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCSeqButtonUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCSliderUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTabLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTextUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTileLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCTreeViewUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCVerticalLayoutUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCWebBrowserUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaControl\LuaCWkeWebkitUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaCDialogBuilder.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaCMarkup.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaCPaintManagerUI.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaCRender.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaCWindowWnd.cpp" />
+    <ClCompile Include="LuaInterface\LuaCore\LuaStruct.cpp" />
+    <ClCompile Include="LuaInterface\LuaCWindow.cpp" />
+    <ClCompile Include="LuaInterface\LuaEntry.cpp" />
+    <ClCompile Include="LuaInterface\LuaRegister.cpp" />
+    <ClCompile Include="LuaInterface\LuaUtils\LuaBit.cpp" />
+    <ClCompile Include="LuaInterface\LuaUtils\LuaWindowExport.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

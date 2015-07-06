@@ -159,9 +159,6 @@
     <ClInclude Include="src\BaseWindow\InfoWindow.h">
       <Filter>src\BaseWindow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\DuiLib\DuiLib\Utils\trayIcon.h">
-      <Filter>src\BaseWindow</Filter>
-    </ClInclude>
     <ClInclude Include="src\CacheMgr\CacheMgr.h">
       <Filter>src\CacheMgr</Filter>
     </ClInclude>
@@ -293,9 +290,6 @@
     </ClInclude>
     <ClInclude Include="src\TagModify\TagModifyWin.h">
       <Filter>src\TagModify</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\DuiLib\DuiLib\UIMenu.h">
-      <Filter>src\UIMenu</Filter>
     </ClInclude>
     <ClInclude Include="src\Utilty\down_http_file.h">
       <Filter>src\Utilty</Filter>
@@ -435,6 +429,9 @@
     <ClInclude Include="src\YApp.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\BaseWindow\trayIcon.h">
+      <Filter>src\BaseWindow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="YMusic.rc">
@@ -463,9 +460,6 @@
       <Filter>src\BaseWindow</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseWindow\InfoWindow.cpp">
-      <Filter>src\BaseWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\DuiLib\DuiLib\Utils\trayIcon.cpp">
       <Filter>src\BaseWindow</Filter>
     </ClCompile>
     <ClCompile Include="src\CacheMgr\CacheMgr.cpp">
@@ -597,9 +591,6 @@
     <ClCompile Include="src\TagModify\TagModifyWin.cpp">
       <Filter>src\TagModify</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\DuiLib\DuiLib\UIMenu.cpp">
-      <Filter>src\UIMenu</Filter>
-    </ClCompile>
     <ClCompile Include="src\Utilty\down_http_file.cpp">
       <Filter>src\Utilty</Filter>
     </ClCompile>
@@ -707,6 +698,9 @@
     </ClCompile>
     <ClCompile Include="src\YApp.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseWindow\trayIcon.cpp">
+      <Filter>src\BaseWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,7 @@ LPCTSTR YPlayListItemUI::GetClass() const
 {
 	return YPlayListItemUI::GetClassName();
 }
+
 void YPlayListItemUI::InitVar()
 {
 	_bReName = false;

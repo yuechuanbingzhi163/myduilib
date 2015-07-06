@@ -16,12 +16,16 @@ class CMarkup;
 class CMarkupNode;
 
 
-class UILIB_API CMarkup
+class UILIB_API CMarkup : public IDuiObject
 {
     friend class CMarkupNode;
 public:
     CMarkup(LPCTSTR pstrXML = NULL);
     ~CMarkup();
+
+	virtual bool IsClass(LPCTSTR pstrClass);
+	virtual LPCTSTR GetClass() const;
+	static LPCTSTR GetClassName();
 
     bool Load(LPCTSTR pstrXML);
     bool LoadFromMem(BYTE* pByte, DWORD dwSize, int encoding = XMLFILE_ENCODING_UTF8);
@@ -68,7 +72,7 @@ private:
 };
 
 
-class UILIB_API CMarkupNode
+class UILIB_API CMarkupNode : public IDuiObject
 {
     friend class CMarkup;
 private:
@@ -76,6 +80,10 @@ private:
     CMarkupNode(CMarkup* pOwner, int iPos);
 
 public:
+	virtual bool IsClass(LPCTSTR pstrClass);
+	virtual LPCTSTR GetClass() const;
+	static LPCTSTR GetClassName();
+
     bool IsValid() const;
 
     CMarkupNode GetParent();

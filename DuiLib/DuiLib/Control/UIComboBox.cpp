@@ -20,10 +20,21 @@ namespace DuiLib
 		return CComboBoxUI::GetClassName();
 	}
 
+	void CComboBoxUI::SetArrowImage(LPCTSTR pStrImage)
+	{
+		m_sArrowImage = pStrImage;
+		Invalidate();
+	}
+
+	LPCTSTR CComboBoxUI::GetArrowImage() const
+	{
+		return m_sArrowImage;
+	}
+
 	void CComboBoxUI::SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue)
 	{
 		if (_tcscmp(pstrName, _T("arrowimage")) == 0)
-			m_sArrowImage = pstrValue;
+			SetArrowImage(pstrValue);
 		else
 			CComboUI::SetAttribute(pstrName, pstrValue);
 	}

@@ -49,12 +49,22 @@
 
 // Required for VS 2008 (fails on XP and Win2000 without this fix)
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0500
+#define _WIN32_WINNT  0x0500 //0x0603 (tooltip will being problem)//
 #endif
+
+//#include <lua.hpp>
 
 #include "UIlib.h"
 
 #include <olectl.h>
+
+#ifndef max
+#define max(a,b)            (((a) > (b)) ? (a) : (b))
+#endif
+
+#ifndef min
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
+#endif
 
 #define lengthof(x) (sizeof(x)/sizeof(*x))
 #define MAX max

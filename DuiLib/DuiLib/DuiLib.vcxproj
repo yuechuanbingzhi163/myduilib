@@ -53,7 +53,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnicodeDebug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -65,7 +65,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -77,7 +77,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -132,6 +132,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
+    <IncludePath>$(LUA_DEV)\include;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
     <OutDir>.\Build\Release\</OutDir>
@@ -147,6 +149,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
+    <IncludePath>$(LUA_DEV)\include;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
     <OutDir>.\Build\Debug\</OutDir>
@@ -162,6 +166,7 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
+    <IncludePath>$(DXDIR)\Include;$(FnLib);$(FnLib)\OpenGL;$(IncludePath);$(LUA_DEV)\include;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnicodeDebug_Static|Win32'">
     <OutDir>.\Build\Debug_u\</OutDir>
@@ -211,10 +216,11 @@
     <Link>
       <OutputFile>../../bin/DuiLib.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;$(LUA_DEV)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <BaseAddress>0x11000000</BaseAddress>
       <ImportLibrary>../../Lib/DuiLib.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -300,6 +306,7 @@
       <BaseAddress>0x11000000</BaseAddress>
       <ImportLibrary>../../lib/DuiLib_d.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -386,7 +393,8 @@
       <BaseAddress>0x11000000</BaseAddress>
       <ImportLibrary>../../Lib/DuiLib_ud.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib;$(LUA_DEV)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);lua5.1.lib;</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -524,6 +532,12 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common\AssertX.cpp" />
+    <ClCompile Include="Common\DuiString.cpp" />
+    <ClCompile Include="Common\Exception.cpp" />
+    <ClCompile Include="Common\sys.cpp" />
+    <ClCompile Include="Common\UICrack.cpp" />
+    <ClCompile Include="Common\Utility.cpp" />
     <ClCompile Include="Control\UIAlbumButton.cpp" />
     <ClCompile Include="Control\UIAniHelper.cpp" />
     <ClCompile Include="Control\UIAnimation.cpp" />
@@ -538,7 +552,13 @@
     <ClCompile Include="Control\UIRadio.cpp" />
     <ClCompile Include="Control\UISeqAnimation.cpp" />
     <ClCompile Include="Control\UISeqButton.cpp" />
-    <ClCompile Include="Core\Utility.cpp" />
+    <ClCompile Include="Core\UITimer.cpp" />
+    <ClCompile Include="Core\UITrayIcon.cpp" />
+    <ClCompile Include="Extend\Log\Logger.cpp" />
+    <ClCompile Include="Extend\Menu\UIMenu.cpp" />
+    <ClCompile Include="Extend\Sound\SoundEngine.cpp" />
+    <ClCompile Include="Extend\Sound\SoundSystem.cpp" />
+    <ClCompile Include="Extend\WkeWebkit\UIWkeWebkit.cpp" />
     <ClCompile Include="Layout\UIAnimationTabLayout.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -554,12 +574,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnicodeRelease|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnicodeRelease_Static|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ThirdPart\WkeWebkit\UIWkeWebkit.cpp" />
-    <ClCompile Include="UICrack.cpp" />
     <ClCompile Include="UIlib.cpp" />
-    <ClCompile Include="Utils\SoundEngine.cpp" />
-    <ClCompile Include="Utils\SoundSystem.cpp" />
-    <ClCompile Include="Utils\sys.cpp" />
     <ClCompile Include="Utils\UIReflection.cpp" />
     <ClCompile Include="Utils\Window.cpp" />
     <ClCompile Include="Utils\WindowImpl.cpp" />
@@ -632,6 +647,16 @@
     <ClCompile Include="Control\UIWebBrowser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommonInclude.h" />
+    <ClInclude Include="Common\AssertX.h" />
+    <ClInclude Include="Common\DuiString.h" />
+    <ClInclude Include="Common\DuiType.h" />
+    <ClInclude Include="Common\Exception.h" />
+    <ClInclude Include="Common\observer_impl_base.hpp" />
+    <ClInclude Include="Common\sys.h" />
+    <ClInclude Include="Common\UICrack.h" />
+    <ClInclude Include="Common\Utility.h" />
+    <ClInclude Include="ControlInclude.h" />
     <ClInclude Include="Control\UIAlbumButton.h" />
     <ClInclude Include="Control\UIAniHelper.h" />
     <ClInclude Include="Control\UIAnimation.h" />
@@ -646,19 +671,24 @@
     <ClInclude Include="Control\UIRadio.h" />
     <ClInclude Include="Control\UISeqAnimation.h" />
     <ClInclude Include="Control\UISeqButton.h" />
-    <ClInclude Include="Core\Utility.h" />
+    <ClInclude Include="Core\UITimer.h" />
+    <ClInclude Include="Core\UITrayIcon.h" />
+    <ClInclude Include="ExtendInclude.h" />
+    <ClInclude Include="Extend\Log\ILogger.h" />
+    <ClInclude Include="Extend\Log\Logger.h" />
+    <ClInclude Include="Extend\Menu\UIMenu.h" />
+    <ClInclude Include="Extend\Sound\SoundEngine.h" />
+    <ClInclude Include="Extend\Sound\SoundSystem.h" />
+    <ClInclude Include="Extend\WkeWebkit\UIWkeWebkit.h" />
+    <ClInclude Include="Extend\WkeWebkit\wke.h" />
+    <ClInclude Include="IDuiObject.h" />
     <ClInclude Include="Layout\UIAnimationTabLayout.h" />
+    <ClInclude Include="NetInclude.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="ThirdPart\WkeWebkit\UIWkeWebkit.h" />
-    <ClInclude Include="ThirdPart\WkeWebkit\wke.h" />
-    <ClInclude Include="UICrack.h" />
     <ClInclude Include="UIlib.h" />
     <ClInclude Include="Utils\downloadmgr.h" />
     <ClInclude Include="Utils\FlashEventHandler.h" />
-    <ClInclude Include="Utils\SoundEngine.h" />
-    <ClInclude Include="Utils\SoundSystem.h" />
-    <ClInclude Include="Utils\sys.h" />
-    <ClInclude Include="Utils\traits.h" />
     <ClInclude Include="Utils\UIDelegate.h" />
     <ClInclude Include="Utils\UIReflection.h" />
     <ClInclude Include="Utils\Utils.h" />
@@ -698,6 +728,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="MsgBox\MsgBox.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DuiLib.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MsgBox\skin\border.png" />
+    <Image Include="MsgBox\skin\btn.png" />
+    <Image Include="MsgBox\skin\btn_click.png" />
+    <Image Include="MsgBox\skin\btn_disable.png" />
+    <Image Include="MsgBox\skin\checkbox.png" />
+    <Image Include="MsgBox\skin\info.png" />
+    <Image Include="MsgBox\skin\info_bg.bmp" />
+    <Image Include="MsgBox\skin\ok.png" />
+    <Image Include="MsgBox\skin\sys-close.png" />
+    <Image Include="MsgBox\skin\warn.png" />
+    <Image Include="MsgBox\YTing\bg_007.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
